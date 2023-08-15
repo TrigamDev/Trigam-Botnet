@@ -13,6 +13,11 @@ module.exports = {
             }]
         }
     },
+    buildMsg: function(error) {
+        return {
+            content: `## ERROR\n${error.description}\n\`${error.value}\``
+        }
+    },
 
     // Getters
     getErrorByCode: function (errorCode) {

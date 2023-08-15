@@ -19,10 +19,8 @@ module.exports = async function handleInteraction(Discord, bot, interaction) {
     };
 }
 
-function parseOptions(hoistedOptions) {
+function parseOptions(hoisted) {
     var options = {};
-    hoistedOptions.forEach(option => {
-        options[option.name] = option.value;
-    });
+    for (let i = 0; i < hoisted.length; i++) options[hoisted[i].name] = hoisted[i].value;
     return options;
 };

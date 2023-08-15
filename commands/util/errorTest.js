@@ -22,9 +22,10 @@ module.exports = {
 
 	execute: async (Discord, bot, interaction, options, subcommand) => {
         let error = errorBuilder.getErrorByCode(options.code);
-        console.log(error)
+        if (!error) return await interaction.reply(errorBuilder.buildEmbedMsg(errors.cantGetError));
         let type = options.text ? 'text' : 'embed';
-        await interaction.reply(errorBuilder.buildEmbedMsg(error));
+        if (type === 'text') return await interaction.reply(errorBuilder.buildMsg(error));
+        else await interaction.reply(errorBuilder.buildEmbedMsg(error));
     }
 };
 
