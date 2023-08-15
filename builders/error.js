@@ -6,9 +6,9 @@ module.exports = {
         return {
             embeds: [{
                 title: embedConfig.titles.error,
-                color: ut.hexStrToNum(embedConfig.colors.error),
-                description: `${error.description}\n${error.value}}`,
-                footer: ut.randomElem(embedConfig.footers.error)
+                color: embedConfig.colors.error,
+                description: `${error.description}\n\`${error.value}\``,
+                footer: { text: ut.randomElem(embedConfig.footers.error) }
             }]
         }
     }

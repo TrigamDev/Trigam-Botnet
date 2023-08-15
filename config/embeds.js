@@ -1,10 +1,10 @@
 module.exports = {
     colors: {
-        defaults: '#3f48cc',
-        error: '#ef233c',
-        deny: '#f14d25',
-        accept: '#2fd250',
-        prompt: '#ffb623',
+        defaults: 0x3f48cc,
+        error: 0xef233c,
+        deny: 0xf14d25,
+        accept: 0x2fd250,
+        prompt: 0xffb623,
     },
     titles: {
         error: "ERROR"
