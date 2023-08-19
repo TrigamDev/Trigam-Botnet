@@ -13,6 +13,7 @@ const vector = require('../pools/quotes/vector.json');
 const krabs = require('../pools/quotes/spongebob/krabs.json');
 
 const baller = require('../pools/8ball.json');
+const rps = require('../pools/rps.json');
 
 const pooler = {
     base: (pool, seed) => {
@@ -43,6 +44,11 @@ const pooler = {
         maybe: (seed) => pooler.base(baller.responses.maybe, seed),
         defer: (seed) => pooler.base(baller.responses.defer, seed),
         none: (seed) => pooler.base(baller.responses.none, seed)
+    },
+    rps: {
+        win: (seed) => pooler.base(rps.win, seed),
+        lose: (seed) => pooler.base(rps.lose, seed),
+        tie: (seed) => pooler.base(rps.tie, seed)
     }
 }
 

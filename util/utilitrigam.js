@@ -9,6 +9,19 @@ const ut = {
     },
 
     //
+    //  MANIPULATION
+    //
+    titleCase (str) {
+        let words = str.split(' ');
+        let newWords = [];
+        for (let word of words) {
+            let newWord = word[0].toUpperCase() + word.slice(1).toLowerCase();
+            newWords.push(newWord);
+        };
+        return newWords.join(' ');
+    },
+
+    //
     //  GENERATION
     //
     progressBar (current, inputMax, barMax, empty, full, thumb) {
