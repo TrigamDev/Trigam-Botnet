@@ -37,7 +37,9 @@
             "Gonna go with yes",
             "Eventually",
             "... why not",
-            "Duh, obviously"
+            "Duh, obviously",
+            "Yes, but only on every third full moon",
+            "The spirits say no, but what the hell, why not"
         ],
         "no": [
             "Don't count on it",
@@ -103,6 +105,7 @@
             "Better not tell you now",
             "Cannot predict now",
             "Concentrate and ask again",
+            "Concentrate and ask aagain, but while doing a dance this time",
             "Try asking again",
             "Ask next time",
             "I'll get back to you on that",
@@ -115,12 +118,20 @@
             "Reply hazy, violently shake your device and try again",
             "Reply hazy, try turning it off and on again",
             "Reply hazy, touch some grass and try again",
+            "Reply hazy, wait for the stars to align and try again",
             "Try again in 2-3 business days",
             "Try again after I've had my morning coffee",
             "Sorry, too busy right now. Try again later",
             "I'm on the phone, hun. Try again later",
             "I'm picking up on... other thoughts. Focus and try again",
-            "Clear your mind and try again"
+            "Clear your mind and try again",
+            "Signs point to asking someone else",
+            "Cannot predict now, I'm on my break",
+            "Ask someone else, I'm busy",
+            "The spirits are buffering, try again",
+            "Ask later, I'm in time-out",
+            "Come back later, I'm binging Breaking Bad",
+            "Solar wind interference detected, try again"
         ],
         "none": [
             "Hey buddy, how about *you* try figuring it out?",
@@ -173,7 +184,8 @@
             "Never ask me for anything ever again",
             "Stay away from me",
             "Never get near me or my son ever again",
-            "You should be locked up for that one"
+            "You should be locked up for that one",
+            "That's classified information"
         ]
     }
 }

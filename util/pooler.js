@@ -14,6 +14,7 @@ const krabs = require('../pools/quotes/spongebob/krabs.json');
 
 const baller = require('../pools/8ball.json');
 const rps = require('../pools/rps.json');
+const champ = require('../pools/champ.json');
 
 const pooler = {
     base: (pool, seed) => {
@@ -49,7 +50,8 @@ const pooler = {
         win: (seed) => pooler.base(rps.win, seed),
         lose: (seed) => pooler.base(rps.lose, seed),
         tie: (seed) => pooler.base(rps.tie, seed)
-    }
+    },
+    champ: (seed) => pooler.base(champ, seed)
 }
 
 module.exports = pooler;
