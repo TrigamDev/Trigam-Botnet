@@ -27,30 +27,49 @@
     "fun": [
         "is ready for the revolution!",
         "has returned from the United Kingdom!",
-        "is both there AND square!"
+        "is both there AND square!",
+        "is a little rattled.",
+        "is shipped over!",
+        "is full of trinkets!"
     ],
     "util": [
-        "is ready to help!"
+        "is ready to help!",
+        "is open!",
+        "isn't the sharpest tool.. box in the shed",
+        "is full of tools!"
     ],
     "moderation": [
         "is back from kicking someone's ass!",
         "is back from the donut shop!",
-        "has had a breakthrough!"
+        "has had a breakthrough!",
+        "is on the clock!",
+        "is ready to not rehabilitate!",
+        "is back from Stanford!",
+        "is ready to lock up innocents!"
     ],
     "games": [
-        "wasn't playing games just now!"
+        "wasn't playing games just now!",
+        "is mashed in!",
+        "is a bit sticky...",
+        "is ready to play around!"
     ],
     "portal": [
         "is ringing!",
-        "has answered your call!"
+        "has answered your call!",
+        "just got off the... phone.",
+        "is dialed up!"
     ],
     "music": [
         "has their Airpods in!",
         "is tuned!",
-        "has tuned in!"
+        "has tuned in!",
+        "is ready to recieve!"
     ],
     "cc": [
         "is back from tinkering!",
-        "is still rotating!"
+        "is still rotating!",
+        "has had their gears ground!",
+        "has rolled up!",
+        "wonders why they have teeth, but can't eat"
     ]
 }

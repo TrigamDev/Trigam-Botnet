@@ -4,7 +4,7 @@ const { box, toolbox, hammer, joystick, phone, radio, cog } = require('./bots.js
 module.exports = {
     Box: new Client({
         intents: [
-            GatewayIntentBits.GuildMessageTyping
+            GatewayIntentBits.Guilds
         ], 
         presence: {
             status: box.devBuild ? 'dnd' : 'online',

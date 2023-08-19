@@ -4,7 +4,7 @@ const errorBuilder = require('../../builders/error.js');
 
 module.exports = {
     name: 'errortest',
-    description: 'Dev command to test how error embeds are built!',
+    description: 'Dev command to test how error embeds are built',
     enabled: true,
     type: ApplicationCommandType.ChatInput,
     options: [{

@@ -1,7 +1,7 @@
 const { ApplicationCommandType } = require("discord.js");
 module.exports = {
     name: "ping",
-    description: "Responds with the ping of the bot!",
+    description: "Responds with the ping of the bot",
     enabled: true,
     type: ApplicationCommandType.ChatInput,
     
