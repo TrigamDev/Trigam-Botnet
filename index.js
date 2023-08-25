@@ -6,9 +6,19 @@ console.log('Starting Trigam Botnet...');
 require('dotenv').config();
 const Discord = require('discord.js');
 const fs = require('fs');
+const mongoose = require('mongoose');
 // Config stuff
 const clients = require('./config/clients.js');
 const configs = require('./config/bots.js');
+// Database stuff
+const userData = require('./database/models/userData.js');
+const serverData = require('./database/models/serverData.js');
+
+// Connect to database
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => console.log('Connected to MongoDB')).catch((err) => console.log(err));
 
 // Turn clients and configs into arrays
 const botClients = Object.values(clients);
@@ -25,6 +35,10 @@ for (i = 0; i < botClients.length; i++) {
     bot.config = botConfig;
     bot.cwd = require('process').cwd;
     bot.token = botConfig.token;
+    bot.models = {
+        userData: userData,
+        serverData: serverData
+    };
 
     // Handlers
     for (const handler of fs.readdirSync('./handlers')) {

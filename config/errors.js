@@ -21,10 +21,23 @@ module.exports = {
         code: "NO_BOT_ACCESS",
         value: "ERR_000"
     },
+    placeNoImagePerms: {
+        name: "No image perms",
+        description: "I don't have permission to send images in this channel!",
+        code: "PLACE_NO_IMAGE_PERMS",
+        value: "ERR_001"
+    },
 
     //
     //  BOT MISUSE
     //
+
+    placeInvalidColor: {
+        name: "Invalid color",
+        description: "That's not a valid color!",
+        code: "PLACE_INVALID_COLOR",
+        value: "ERR_100"
+    },
 
     //
     //  MINOR ERRORS

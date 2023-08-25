@@ -1,4 +1,5 @@
 const seedrandom = require('seedrandom');
+const perms = require('../types/perms.js');
 
 const ut = {
     //
@@ -6,6 +7,11 @@ const ut = {
     //
     getName (member) {
         return member.nickname ? member.nickname : member.user.globalName;
+    },
+    iHavePerm (interaction, perm) {
+        let permission = perms.getPerm(perm);
+        let hasIt = interaction.guild.members.me.permissions.has(permission.flag)
+        return hasIt;
     },
 
     //

@@ -22,6 +22,7 @@ module.exports = {
         // Other cool people
         '815350320959193128', // e !
         '779053396363051038', // polygon
+        '718023501306527766', // Noah gaming
     ],
     servers: [
         '982713119883296809', // Trigam Botnet
