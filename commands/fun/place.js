@@ -61,15 +61,10 @@ module.exports = {
         switch (subcommand) {
             case 'view': {
                 let canvas = await generateCanvas(pixelData, {
-                    sizeX: config.sizeX,
-                    sizeY: config.sizeY,
-                    color: config.theme.value,
-                    overlay: config.hasOverlay,
-                    upscale: config.upscale
+                    sizeX: config.sizeX, sizeY: config.sizeY,
+                    color: config.theme.value, overlay: config.hasOverlay, upscale: config.upscale
                 }, {
-                    level: config.zoom.zoomLevel,
-                    x: config.zoom.zoomX,
-                    y: config.zoom.zoomY
+                    level: config.zoom.zoomLevel, x: config.zoom.zoomX, y: config.zoom.zoomY
                 });
                 // Render and send
                 await renderAndSend(canvas, interaction);
@@ -82,11 +77,8 @@ module.exports = {
                 pixelData.push({ x: options.x, y: options.y, color: color.id });
                 // Get canvas
                 let canvas = await generateCanvas(pixelData, {
-                    sizeX: config.sizeX,
-                    sizeY: config.sizeY,
-                    color: config.theme.value,
-                    overlay: config.hasOverlay,
-                    upscale: config.upscale
+                    sizeX: config.sizeX, sizeY: config.sizeY,
+                    color: config.theme.value, overlay: config.hasOverlay,  upscale: config.upscale
                 });
                 // Render and send
                 await renderAndSend(canvas, interaction);
@@ -171,17 +163,17 @@ async function searchColor(name, interaction) {
     let results = Object.values(placeColors).filter(col => col.level <= colorMilestone);
 
     // Find directly
-    let findID = results.find(col => col.id.toLowerCase() === name.toLowerCase());
+    let findID = results.find(col => col.id.toLowerCase() === name?.toLowerCase());
     if (findID) results = [findID];
-    let findName = results.find(col => col.name.toLowerCase() === name.toLowerCase());
+    let findName = results.find(col => col.name.toLowerCase() === name?.toLowerCase());
     if (findName) results = [findName];
 
     // Find by partial match
     results = results.filter(col => {
-        if (col.name.toLowerCase() === name.toLowerCase()) return true;
-        else if (col.id.toLowerCase() === name.toLowerCase()) return true;
-        else if (col.name.toLowerCase().includes(name.toLowerCase())) return true;
-        else if (col.id.toLowerCase().includes(name.toLowerCase())) return true;
+        if (col.name.toLowerCase() === name?.toLowerCase()) return true;
+        else if (col.id.toLowerCase() === name?.toLowerCase()) return true;
+        else if (col.name.toLowerCase().includes(name?.toLowerCase())) return true;
+        else if (col.id.toLowerCase().includes(name?.toLowerCase())) return true;
     });
 
     return results;
@@ -222,15 +214,12 @@ function encodePixelData(pixelData) {
     let pixelString = pixelData.map(pixel => {
         return `${pixel.x},${pixel.y},${pixel.color}`;
     }).join(';');
-    // Encode to base64
-    let compressed = Buffer.from(pixelString).toString('base64');
-    return compressed
+    return pixelString;
 };
 
-async function decodePixelData(basedPixelData) {
+async function decodePixelData(pixelString) {
     let pixelData = [];
     // Decode from base64
-    let pixelString = Buffer.from(basedPixelData, 'base64').toString('ascii');
     let pixels = pixelString.split(';');
     // Split string up into array
     pixels.forEach(async pixel => {
