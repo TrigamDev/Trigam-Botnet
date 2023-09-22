@@ -1,6 +1,6 @@
 import { ActivityType } from "discord.js";
 
-type BotConfig = {
+export type BotConfig = {
     name: string;
     consoleColor: string;
     id: string;
