@@ -4,11 +4,13 @@ import errors, { Error } from "../config/errors";
 import { titles, footers, colors } from "../config/embeds";
 
 export function buildErrorEmbed (error: Error, ephemeral: boolean = true) {
+    let randomFooter = ut.randomElement(footers.error, Date.now().toString());
+    console.log(randomFooter);
     return {
         embeds: [{
             title: titles.error,
             description: `${error.description}\n\`${error.value}\``,
-            footer: ut.randomElement(footers.error, Date.now().toString()),
+            footer: { text: randomFooter },
             color: colors.error
         }],
         ephemeral: ephemeral

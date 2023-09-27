@@ -17,9 +17,18 @@ export default function loadEvents(bot: Bot) {
     };
 };
 
+import { PlayerEvents } from 'discord-player';
+
 function registerEvent(bot: Bot, event: Event) {
     // Register the event
-    bot.client.on(event.name, event.run.bind(null, bot));
+    switch (event.type) {
+        case 'discord':
+            bot.client.on(event.name, event.run.bind(null, bot));
+            break;
+        case 'music':
+            bot.player?.on(event.name as keyof PlayerEvents, event.run.bind(null, bot));
+            break;
+    };
 };
 
 // Load all events in the directory

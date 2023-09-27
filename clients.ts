@@ -43,7 +43,10 @@ export const PhoneClient: Client = new Client({
     }
 });
 export const RadioClient: Client = new Client({
-    intents: [ GatewayIntentBits.Guilds ],
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildVoiceStates
+    ],
     presence: {
         status: RadioConfig.devBuild ? 'dnd' : 'online',
         afk: false,

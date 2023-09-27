@@ -32,6 +32,20 @@ export default {
     //  BOT MISUSE - 100
     //
 
+    notInVc: {
+        name: "Not In VC",
+        description: "You're not in a voice channel!",
+        code: "NOT_IN_VC",
+        value: "ERR_100"
+    } as Error,
+
+    notSharingVc: {
+        name: "Not Sharing VC",
+        description: "You're not in my voice channel!",
+        code: "NOT_SHARING_VC",
+        value: "ERR_101"
+    } as Error,
+
 
     //
     //  MINOR ERRORS - 200
@@ -108,6 +122,13 @@ export default {
         description: "I can't find that webhook!",
         code: "CANT_FIND_WEBHOOK",
         value: "ERR_403"
+    } as Error,
+
+    noMusicResults: {
+        name: "No Results",
+        description: "I couldn't find any search results!",
+        code: "NO_MUSIC_RESULTS",
+        value: "ERR_404"
     } as Error,
 
 

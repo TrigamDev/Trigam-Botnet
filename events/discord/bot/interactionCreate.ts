@@ -18,6 +18,7 @@ export interface Command {
 
 export default {
     name: 'interactionCreate',
+    type: 'discord',
     run: async (bot: Bot, interaction: Discord.BaseInteraction) => {
         // Commands
         if (interaction.isCommand())
@@ -39,7 +40,8 @@ async function handleCommands(bot: Bot, interaction: Discord.ChatInputCommandInt
     try { await command.execute(bot, interaction); }
     catch (err) {
         console.error(err);
-        await interaction.reply( buildErrorEmbed(errors.couldntRunCommand) );
+        if (interaction.deferred) await interaction.followUp( buildErrorEmbed(errors.couldntRunCommand) );
+        else await interaction.reply( buildErrorEmbed(errors.couldntRunCommand) );
     }
 };
 
