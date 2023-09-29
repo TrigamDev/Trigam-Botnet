@@ -6,6 +6,10 @@ import { Bot } from "../../index.ts";
 import { buildErrorEmbed } from '../../util/error.ts';
 import errors from '../../config/errors.ts';
 
+//
+//  CAN'T FINISH UNTIL BUN ADDS SUPPORT FOR NODE::DGRAM
+//
+
 export default {
     name: 'play',
     description: 'Plays a song',

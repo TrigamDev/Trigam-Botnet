@@ -1,7 +1,7 @@
-import * as Discord from "discord.js";
 import { ApplicationCommandType, ChatInputCommandInteraction } from "discord.js";
 
-import { Bot } from "../..";
+import pooler from "../../util/pooler.ts";
+import { Bot } from "../../index.ts";
 
 export default {
     name: 'ping',
@@ -10,6 +10,8 @@ export default {
     type: ApplicationCommandType.ChatInput,
 
     execute: async (bot: Bot, interaction: ChatInputCommandInteraction) => {
-        await interaction.reply({ content: "Pong!" });
+        let latency = Date.now() - interaction.createdTimestamp;
+        let response = pooler.ping(bot.config.id, latency, interaction.id);
+        await interaction.reply({ content: `${response.chosen}\n\`${latency}ms\``, ephemeral: true });
     }
 };

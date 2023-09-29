@@ -2,9 +2,9 @@ import * as Discord from "discord.js";
 import { REST, Routes } from "discord.js";
 import * as fs from "node:fs";
 
-import { Bot } from "../index";
-import { botGuilds } from "../config/whitelists";
-import { Command } from "../events/discord/bot/interactionCreate";
+import { Bot } from "../index.ts";
+import { botGuilds } from "../config/whitelists.ts";
+import { Command } from "../events/discord/bot/interactionCreate.ts";
 
 export default function registerCommands(bot: Bot) {
     let commands: Command[] = [];
@@ -24,7 +24,7 @@ export default function registerCommands(bot: Bot) {
         for (const server of botGuilds.guilds) {
             await bot.client.guilds.fetch(server).then(async guild => {
                 if (!botGuilds.enabled) return await guild.commands.set([]);
-                return await guild.commands.set(commands as Discord.ApplicationCommandDataResolvable[]);
+                return await guild.commands.set([]);
             }).catch(err => { console.error(err) });
         }
     });

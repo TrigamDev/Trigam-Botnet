@@ -1,0 +1,26 @@
+{
+    "win": [
+        "You win!",
+        "You win! Feeling better about yourself?",
+        "You win! *though, it's not hard...*",
+        "You're a winner!",
+        "You beat me!",
+        "Congrats! You beat RNG!"
+    ],
+    "lose": [
+        "You lose!",
+        "Looossseeerrrrr!",
+        "You lose, loser!",
+        "Somehow, you lost!",
+        "How'd you manage to lose against an inanimate object?",
+        "Maybe get better and come see me again?",
+        "Congrats! You lost!",
+        "It's rock-paper-scissors, it isn't hard"
+    ],
+    "tie": [
+        "It's a tie!",
+        "It's a tie! *how boring...*",
+        "Damn, it's a tie!",
+        "Well this is awkward..."
+    ]
+}
