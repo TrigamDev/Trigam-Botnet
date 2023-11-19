@@ -1,5 +1,4 @@
 import * as Discord from "discord.js";
-import { REST, Routes } from "discord.js";
 import * as fs from "node:fs";
 
 import { Bot } from "../index.ts";

@@ -40,7 +40,7 @@ async function handleCommands(bot: Bot, interaction: Discord.ChatInputCommandInt
     try { await command.execute(bot, interaction); }
     catch (err) {
         console.error(err);
-        if (interaction.deferred) await interaction.followUp( buildErrorEmbed(errors.couldntRunCommand) );
+        if (interaction.deferred || interaction.replied) await interaction.followUp( buildErrorEmbed(errors.couldntRunCommand) );
         else await interaction.reply( buildErrorEmbed(errors.couldntRunCommand) );
     }
 };

@@ -1,11 +1,10 @@
-import ut from "./utilitrigam";
+import ut from "./utilitrigam.ts";
 
-import errors, { Error } from "../config/errors";
-import { titles, footers, colors } from "../config/embeds";
+import errors, { Error } from "../config/errors.ts";
+import { titles, footers, colors } from "../config/embeds.ts";
 
 export function buildErrorEmbed (error: Error, ephemeral: boolean = true) {
     let randomFooter = ut.randomElement(footers.error, Date.now().toString());
-    console.log(randomFooter);
     return {
         embeds: [{
             title: titles.error,

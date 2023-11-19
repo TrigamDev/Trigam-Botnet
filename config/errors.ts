@@ -27,6 +27,13 @@ export default {
         value: "ERR_001"
     } as Error,
 
+    noWebhookPerms: {
+        name: "No Webhook Permissions",
+        description: "I don't have permission to manage webhooks!",
+        code: "NO_WEBHOOK_PERMISSIONS",
+        value: "ERR_002"
+    } as Error,
+
 
     //
     //  BOT MISUSE - 100
@@ -44,6 +51,13 @@ export default {
         description: "You're not in my voice channel!",
         code: "NOT_SHARING_VC",
         value: "ERR_101"
+    } as Error,
+
+    cantUseInDM: {
+        name: "Can't Use In DM",
+        description: "This command cannot be used in DMs!",
+        code: "CANT_USE_IN_DM",
+        value: "ERR_102"
     } as Error,
 
 

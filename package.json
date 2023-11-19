@@ -16,7 +16,7 @@
   "dependencies": {
     "@discord-player/extractor": "^4.4.4",
     "@discordjs/opus": "^0.9.0",
-    "discord-player": "^6.6.4",
+    "discord-player": "^6.6.6",
     "discord.js": "^14.13.0",
     "esm-seedrandom": "^3.0.5",
     "youtube-ext": "^1.1.14"

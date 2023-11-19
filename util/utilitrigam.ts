@@ -1,14 +1,24 @@
+import Discord from 'discord.js';
 import { prng_alea } from 'esm-seedrandom';
 
 //
-//  GETTERS
+//  DATA
 //
+
+function getNameFromMember (member: Discord.GuildMember): string {
+    return member.nickname ? member.nickname : member.user.globalName;
+}
+
+function channelIsDMBased (channel: Discord.Channel): boolean {
+    return false;
+};
 
 
 
 //
 //  MANIPULATION
 //
+
 function clamp (num: number, min: number, max: number): number {
     return Math.min(Math.max(num, min), max);
 };
@@ -39,9 +49,11 @@ function titleCase (str: string): string {
 };
 
 
+
 //
 //  GENERATION
 //
+
 function progressBar (current: number, inputMax: number, barMax: number, empty: string, full: string, thumb: string): string {
     let num = Math.round(convertRange(current, [0, inputMax], [0, barMax]));
     let diff = barMax - num;
@@ -64,6 +76,7 @@ function starBar (rating: number, maxStars: number, fullStar: string, halfStar: 
 //
 //  CONVERSION
 //
+
 function convertRange (value: number, rangeX: number[], rangeY: number[]): number {
     return ( value - rangeX[0] ) * ( rangeY[1] - rangeY[0] ) / ( rangeX[1] - rangeX[0] ) + rangeY[0];
 };
@@ -73,6 +86,7 @@ function convertRange (value: number, rangeX: number[], rangeY: number[]): numbe
 //
 //  RANDOM
 //
+
 function randomElement (array: any[], seed: string): any {
     let rng = prng_alea(seed);
     let random = Math.floor(rng() * array.length);
@@ -84,7 +98,10 @@ function randomNumber (min: number, max: number, seed: string): number {
     return Math.floor(rng() * (max - min + 1) + min);
 };
 
+
+
 export default {
+    getNameFromMember, channelIsDMBased,
     clamp, titleCase,
     progressBar, starBar,
     convertRange,
