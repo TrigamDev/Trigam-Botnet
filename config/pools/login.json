@@ -35,7 +35,7 @@
 		"{bot|name} is on medical leave due to treatment by mailing services"
 	],
 	"reminders": [
-		"a"
+		""
 	],
 	"util": [
 		"{bot|name} is ready to help!",
@@ -45,18 +45,38 @@
 		"{bot|name} *isn't* such a tool"
 	],
 	"mod": [
-		"a"
+		"{bot|name} is back from kicking someone's ass!",
+		"{bot|name} is back from the donut shop!",
+		"{bot|name} has had a breakthrough!",
+		"{bot|name} is on the clock!",
+		"{bot|name} is ready to not rehabilitate!",
+		"{bot|name} is back from Stanford!",
+		"{bot|name} is ready to lock up innocents!",
+		".... even {bot|name} is appalled at the current state of the US..."
 	],
 	"games": [
-		"a"
+		"{bot|name} wasn't playing games just now!",
+		"{bot|name} is mashed in!",
+		"{bot|name} is a bit sticky...",
+		"{bot|name} is ready to play around!"
 	],
 	"portal": [
-		"a"
+		"{bot|name} is ringing!",
+		"{bot|name} has answered your call!",
+		"{bot|name} just got off the... phone.",
+		"{bot|name} is dialed in!"
 	],
 	"music": [
-		"a"
+		"{bot|name} has their Airpods in!",
+		"{bot|name} is tuned!",
+		"{bot|name} has tuned in!",
+		"{bot|name} is ready to recieve! ...wait"
 	],
 	"cc": [
-		"a"
+		"{bot|name} is back from tinkering!",
+		"{bot|name} is still rotating!",
+		"{bot|name} has had their gears ground!",
+		"{bot|name} has rolled up!",
+		"{bot|name} wonders why they have teeth, but can't eat"
 	]
 }
