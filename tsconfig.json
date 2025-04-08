@@ -4,6 +4,8 @@
 		"baseUrl": ".",
 		"paths": {
 			"@botnet/*": ["./*"],
+			"@commands/*": ["./commands/*"],
+			"@events/*": ["./events/*"],
 			"@pools/*": ["./config/pools/*"]
 		},
 

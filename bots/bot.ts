@@ -2,6 +2,8 @@ import { Client, Collection, REST, Routes } from "discord.js"
 import { readdir } from "fs/promises"
 import { join } from "path"
 
+import { devGuilds } from "@botnet/config/whitelist"
+
 import type {
 	ActivityType,
 	ApplicationCommandDataResolvable,
@@ -9,7 +11,6 @@ import type {
 	Snowflake
 } from "discord.js"
 import type { Command } from "@botnet/commands/command"
-import { login } from "@botnet/config/pools/pooler"
 
 // https://github.com/eritislami/evobot/blob/master/structs/Bot.ts
 export class Bot {
@@ -24,46 +25,80 @@ export class Bot {
 			intents: config.intents
 		})
 		this.config = config
-
-		this.client.on("ready", () => {
-			this.log(login({ bot: this }).chosen)
-			this.registerCommands()
-		})
 	}
 
 	public async login() {
+		await this.registerCommands()
+		await this.registerEvents()
+
 		await this.client.login(this.config.token)
 	}
 
-	private async registerCommands() {
-		const rest: REST = new REST({ version: "9" }).setToken(
-			this.config.token
-		)
+	public async registerCommands() {
+		const commandFolder = join(__dirname, `../commands`)
 
 		// Get all command files
-		const commandDir = await readdir(
-			join(__dirname, `../commands/${this.config.id}`)
-		)
-		const commandFiles = commandDir.filter((commandFile) =>
-			commandFile.endsWith(".ts")
-		)
+		const commandDirs: string[] = [`all`, this.config.id]
 
-		let commands: ApplicationCommandDataResolvable[] = []
-
-		// Loop through the command files, and grab all the data
-		for (const commandFile of commandFiles) {
-			const command = await import(
-				join(__dirname, `../commands/${this.config.id}/${commandFile}`)
+		// Loop through the command files and register them
+		for (const commandDir of commandDirs) {
+			const dir = join(commandFolder, commandDir)
+			const commandFiles = (await readdir(dir)).filter((commandFile) =>
+				commandFile.endsWith(".ts")
 			)
+			for (const commandFile of commandFiles) {
+				const command = await import(`${dir}/${commandFile}`)
+				this.commands.set(command.default.data.name, command.default)
+			}
+		}
+	}
 
-			this.commands.set(command.default.data.name, command.default)
-			commands.push(command.default.data)
+	public async deployCommands() {
+		const rest: REST = new REST().setToken(this.config.token)
+		let commands: ApplicationCommandDataResolvable[] = Array.from(
+			this.commands.values()
+		).map((command) => command.data)
+
+		// Set commands in whitelisted servers
+		for (const guildId of devGuilds.guilds) {
+			const isInGuild = this.client.guilds.cache.get(guildId) != undefined
+			if (!isInGuild) continue
+
+			const server = await this.client.guilds.fetch(guildId)
+			if (server) {
+				if (!devGuilds.enabled) await server.commands.set([])
+				else await server.commands.set(commands)
+			}
 		}
 
-		// Set commands
+		// Set commands on bot
+		if (this.config.inDevelopment) commands = []
 		await rest.put(Routes.applicationCommands(this.client.user!.id), {
 			body: commands
 		})
+	}
+
+	private async registerEvents() {
+		const eventFolder = join(__dirname, `../events`)
+
+		// Get all event files
+		const eventFiles = (await readdir(eventFolder)).filter((eventFile) =>
+			eventFile.endsWith(".ts")
+		)
+
+		// Loop through the event files and register them
+		for (const eventFile of eventFiles) {
+			const event = require(`@events/${eventFile}`).default
+			if (event.once) {
+				this.client.once(event.name, (...args) =>
+					event.execute(this, ...args)
+				)
+			} else {
+				this.client.on(event.name, (...args) =>
+					event.execute(this, ...args)
+				)
+			}
+		}
 	}
 
 	public log(message: string) {

@@ -43,8 +43,8 @@ export function ping(
 
 	// Choose the correct pool based on the ping latency
 	let timedPool: string[] = pool.general
-	if (latency <= 75) timedPool = pool.low
-	else if (latency >= 450) timedPool = pool.high
+	if (latency <= 200) timedPool = pool.low
+	else if (latency >= 500) timedPool = pool.high
 
 	// Randomly choose between the normal pool and the latency-based pool
 	const chosenPool: string[] = randomElement([pool.general, timedPool]) ?? []
