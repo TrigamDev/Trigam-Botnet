@@ -1,4 +1,4 @@
-import { randomElement, randomRange } from "@botnet/util/random"
+import { randomElement } from "@botnet/util/random"
 
 import { Bracketeer, type Context } from "@botnet/util/bracketeer"
 
@@ -18,7 +18,7 @@ export function base(
 }
 
 export function login(context: Context, seed?: string): PoolElement {
-	// 50% chance to use the general pool
+	// Randomly choose between the general pool and bot-specific pool
 	const botId: string = context.bot?.config.id ?? "general"
 	const pool = randomElement([logins.general, (logins as KeyedPool)[botId]])
 	return base(pool as string[], context, seed)
@@ -34,18 +34,21 @@ export function ping(
 	context: Context,
 	seed?: string
 ): PoolElement {
+	// Randomly choose between general pool and bot-specific pool
 	const botId: string = context.bot?.config.id ?? "general"
 	const pool: PingPool = randomElement([
 		pings.general,
 		(pings as KeyedPool)[botId]
 	]) as PingPool
 
-	let timedPool = pool.general
+	// Choose the correct pool based on the ping latency
+	let timedPool: string[] = pool.general
 	if (latency <= 75) timedPool = pool.low
 	else if (latency >= 450) timedPool = pool.high
 
-	const chosenPool = randomElement([pool.general, timedPool])
-	return base(chosenPool as string[], context, seed)
+	// Randomly choose between the normal pool and the latency-based pool
+	const chosenPool: string[] = randomElement([pool.general, timedPool]) ?? []
+	return base(chosenPool, context, seed)
 }
 
 export interface PoolElement {
