@@ -38,7 +38,11 @@
 		"a"
 	],
 	"util": [
-		"a"
+		"{bot|name} is ready to help!",
+		"{bot|name} is open!",
+		"{bot|name} isn't the sharpest tool... box in the shed",
+		"{bot|name} is full of tools!",
+		"{bot|name} *isn't* such a tool"
 	],
 	"mod": [
 		"a"

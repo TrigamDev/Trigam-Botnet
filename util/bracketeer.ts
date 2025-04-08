@@ -30,9 +30,9 @@ export class Bracketeer {
 
 			const blocks = input.match(/{([^{]+?)}/g)
 			if (blocks) {
-				blocks.forEach(async (block) => {
+				blocks.forEach((block) => {
 					const blockArgs = block.slice(1, -1).split("|")
-					const substituted = await this.substitute(blockArgs)
+					const substituted = this.substitute(blockArgs)
 					input = input.replace(block, substituted)
 				})
 			}
@@ -41,10 +41,7 @@ export class Bracketeer {
 		return input
 	}
 
-	private async substitute(
-		block: string[],
-		parent?: string[]
-	): Promise<string> {
+	private substitute(block: string[], parent?: string[]): string {
 		if (block.length === 0) return ""
 		let blockName: string = block.shift() as string
 
