@@ -2,7 +2,7 @@ import seedrandom from "seedrandom"
 
 export function randomElement<Type>(
 	array: Type[],
-	seed: string | undefined
+	seed?: string | undefined
 ): Type | undefined {
 	if (!array || array.length == 0) return undefined
 
@@ -14,7 +14,7 @@ export function randomElement<Type>(
 export function randomRange(
 	min: number,
 	max: number,
-	seed: string | undefined
+	seed?: string | undefined
 ): number {
 	let random = seedrandom(seed)
 	return Math.floor(random() * (max - min + 1) + min)

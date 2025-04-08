@@ -28,6 +28,7 @@ export class Bracketeer {
 			previousInput = input
 			iterations++
 
+			// Get all blocks for this step and substitute them
 			const blocks = input.match(/{([^{]+?)}/g)
 			if (blocks) {
 				blocks.forEach((block) => {
@@ -41,14 +42,16 @@ export class Bracketeer {
 		return input
 	}
 
+	// Subsitute a single block, such as {add|9|10}
 	private substitute(block: string[], parent?: string[]): string {
 		if (block.length === 0) return ""
 		let blockName: string = block.shift() as string
 
 		if (!parent) parent = []
 
-		// Use the 'parent's to rescope where responses are
+		// Use the parents to rescope where responses are
 		// being searched for
+		// (allowing for nested responses, eg {bot|xp|level})
 		let scope = this.responses
 		for (let i = 0; i < parent.length; i++) {
 			let newScope = scope[parent[i] as string]
@@ -63,12 +66,12 @@ export class Bracketeer {
 		// Actual responses
 		const response = scope[blockName]
 		if (response) {
-			// String responses
+			// Handle string responses
 			if (typeof response === "string") {
 				return response
 			}
 
-			// Function responses
+			// Handle function responses
 			if (typeof response === "function") {
 				return response.call(null, block)
 			}
@@ -106,6 +109,9 @@ export class Bracketeer {
 				name: this.context.bot?.config.name ?? "",
 				shard: () => {
 					return String(this.context.bot?.client.shard) ?? "0"
+				},
+				xp: {
+					level: "0"
 				}
 			}
 		}
