@@ -11,7 +11,7 @@ export function randomElement<Type>(
 	return array[randIndex]
 }
 
-export function randomNumber(
+export function randomRange(
 	min: number,
 	max: number,
 	seed: string | undefined

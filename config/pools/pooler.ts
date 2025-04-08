@@ -1,4 +1,4 @@
-import { randomElement, randomNumber } from "@botnet/util/random"
+import { randomElement, randomRange } from "@botnet/util/random"
 
 import { Bracketeer, type Context } from "@botnet/util/bracketeer"
 
@@ -18,7 +18,7 @@ export function base(
 
 export function login(context: Context, seed?: string): PoolElement {
 	let pool = loginPool as MultiPool
-	let rand = randomNumber(0, 1, seed)
+	let rand = randomRange(0, 1, seed)
 	// 50% chance to use the general pool
 	const botId: string = context.bot?.config.id ?? "general"
 	if (rand === 0) return base(loginPool.general, context, seed)

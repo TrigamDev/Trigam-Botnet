@@ -25,7 +25,6 @@ export class Bot {
 		})
 		this.config = config
 
-		this.login()
 		this.client.on("ready", () => {
 			this.log(login({ bot: this }).chosen)
 			this.registerCommands()
