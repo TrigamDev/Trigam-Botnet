@@ -1,0 +1,12 @@
+{
+	"editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+	"vs-code-prettier-eslint.prettierLast": false,
+
+	"editor.formatOnType": true,
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.formatOnSaveMode": "file",
+
+	"files.autoSave": "afterDelay",
+	"files.autoSaveDelay": 500
+}
