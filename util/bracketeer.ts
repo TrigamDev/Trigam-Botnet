@@ -3,12 +3,14 @@ import type {
 	Channel,
 	Guild,
 	GuildMember,
+	Interaction,
 	Message,
 	Role,
 	User
 } from "discord.js"
 
 import * as config from "@botnet/config/bracketeer"
+import { getMember, getUser } from "./get"
 
 export class Bracketeer {
 	private context: Context
@@ -39,12 +41,13 @@ export class Bracketeer {
 			}
 		}
 
-		return input
+		return this.unescape(input)
 	}
 
 	// Subsitute a single block, such as {add|9|10}
 	private substitute(block: string[], parent?: string[]): string {
 		if (block.length === 0) return ""
+		const fullBlock = [...block]
 		let blockName: string = block.shift() as string
 
 		if (!parent) parent = []
@@ -64,27 +67,32 @@ export class Bracketeer {
 		if (this.variables[blockName]) return this.variables[blockName]
 
 		// Actual responses
+		const invalid = this.escape(`{${fullBlock.join("|")}}`)
 		const response = scope[blockName]
 		if (response) {
-			// Handle string responses
-			if (typeof response === "string") {
-				return response
-			}
-
-			// Handle function responses
-			if (typeof response === "function") {
-				return response.call(null, block)
-			}
-
-			// If response is an object, use next block
-			// argument as the new name, and recurse
-			if (typeof response === "object") {
-				parent?.push(blockName)
-				return this.substitute(block, parent)
+			switch (typeof response) {
+				// Handle string responses
+				case "string":
+					return response ?? invalid
+				// Handle function responses
+				case "function":
+					return response(block) ?? invalid
+				// If an object, rescope and recurse
+				case "object": {
+					parent?.push(blockName)
+					return this.substitute(block, parent)
+				}
 			}
 		}
 
-		return ""
+		return invalid
+	}
+
+	private escape(block: string): string {
+		return block.replace(/{/g, "❴").replace(/}/g, "❵").replace(/\|/g, "⏐")
+	}
+	private unescape(block: string): string {
+		return block.replace(/❴/g, "{").replace(/❵/g, "}").replace(/\⏐/g, "|")
 	}
 
 	public setContext(context: Context) {
@@ -114,6 +122,34 @@ export class Bracketeer {
 				xp: {
 					level: "0"
 				}
+			},
+
+			// User
+			user: (searchUser: string, property: string, ...args) => {
+				if (!this.context.interaction || !this.context.bot) return null
+
+				// Get the user
+				if (!searchUser) searchUser = this.context.interaction.user.id
+				const user = getUser(
+					searchUser,
+					this.context.interaction,
+					this.context.bot
+				)
+				const member = getMember(searchUser, this.context.interaction)
+
+				if (!user || !member) return null
+
+				// User data
+				switch (property) {
+					case "@":
+					case "mention": {
+						return (
+							member.user.toString() || user.toString() || "<@0>"
+						)
+					}
+					default:
+						return null
+				}
 			}
 		}
 	}
@@ -122,6 +158,7 @@ export class Bracketeer {
 export interface Context {
 	[key: string]: any
 	bot?: Bot
+	interaction?: Interaction
 	user?: User
 	member?: GuildMember
 	message?: Message
@@ -143,7 +180,7 @@ interface Responses {
 }
 type Response =
 	| string
-	| ((...args: any[]) => string)
+	| ((...args: any[]) => string | null)
 	| {
 			[key: string]: Response
 	  }

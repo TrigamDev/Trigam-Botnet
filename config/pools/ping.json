@@ -62,7 +62,6 @@
 			"huh? what's happening?",
 			"haha imagine being online",
 			"zzz",
-			"With the power of Discord.js, I sawed the global internet speed in half!",
 			"Sponsored by Internet Explorer",
 			"... are you still there?",
 			"Maybe try priority queue",
@@ -78,11 +77,14 @@
 			"undefined",
 			"ping.util.general[5]",
 			"{bot|name} is thinking...",
-			"Greetings user#{pad|{rng|0|9999}|4}"
+			"Greetings user#{pad|{rng|0|9999}|4}",
+			"All services are operational."
 		],
 		"low": [
 			"I am working faster than usual.",
-			"Now with 27% latency reduction!"
+			"Now with 27% latency reduction!",
+			"I aim to please.",
+			"Operating at exceptional efficiency."
 		],
 		"high": [
 			"I am working slower than usual.",
@@ -90,21 +92,31 @@
 			"Oops, was busy rebooting.",
 			"My servers are... functional.",
 			"My code appears to be a bit messy.",
-			"Complain again and I WILL shut off support for {server|name}."
+			"Complain again and I WILL shut off support for {server|name}.",
+			"This is an embarassing showing.",
+			"Sorry, service is slow right now."
 		]
 	},
 	"mod": {
 		"general": [
 			"I'm kinda busy right now, can you quit bothering me?",
 			"Someone pinged me! Mods can I ban them?",
-			"Got anyone for me to punish?"
+			"Got anyone for me to punish?",
+			".. **WHAT**? Oh, I thought someone was ghost pinging... carry on"
 		],
 		"low": [
-			"Serving bans at record speeds!"
+			"Serving bans at record speeds!",
+			"The ban hammer has never swung so fast!",
+			"Wow! I'm not actually snoozing on the clock!\n-# ... *uh actually, pretend you didn't hear that*"
 		],
 		"high": [
 			"Today's a slow day, not many people to punish...",
-			"Too busy giving people the ban hammer, try later"
+			"Too busy giving people the ban hammer, try later",
+			"... *snore*... huh, what? No, I wasn't just sleeping on the job!",
+			".... *snoooorree*.....",
+			".. I wasn't just snoozing on the job, what are you talking about?",
+			"Don't talk to me until I've had my morning coffee",
+			"I'M IN A SHOOTOUT, TRY AGAIN LATER"
 		]
 	},
 	"games": {
@@ -117,37 +129,55 @@
 			"position in ping queue: 2467",
 			"i love ping pong!",
 			"{bot|name} never dies!",
-			"It is good day to be not dead!"
+			"it is good day to be not dead!"
 		],
 		"low": [
 			"damn, i'm running well",
 			"can sonic '06 get these kinds of speeds?",
-			"yeah I use linux, how could you tell?"
+			"yeah I use linux, how could you tell?",
+			"fabulously optimized",
+			"apparently, turning down the render distance helps with lag",
+			"damn, i'm starting to like this sodium stuff",
+			"tip: apparently closing the 19 different programs in the background makes the performance better",
+			"that was a much needed server clean"
 		],
 		"high": [
 			"shit, i'm pretty laggy rn",
 			"try turning me off and on again",
 			"still running better than minecraft",
 			"maybe try using the break to touch some grass",
-			"the servers are barely online, apprently"
+			"the servers are barely online, apprently",
+			"maybe i should close all those chrome tabs.."
 		]
 	},
 	"portal": {
 		"general": [
 			"Pull the strings and make them ring",
-			"Do you hear it? The ringing..."
+			"Do you hear it? The ringing...",
+			"What's that? .. yeah? .... the person on the other end of the line called you names",
+			"ZAMN, can I get ya number {username}?",
+			"ZAMN, if you're free tonight, call me {username}",
+			"I've heard unimaginable horrors from these calls..."
 		],
 		"low": [
-			"I'm on speed-dial"
+			"I'm on speed-dial",
+			"I'm a hotline, baby!",
+			"You've never talked to someone faster!\n-#(well, except through DMs maybe)",
+			"I was waiting for you to call, {username}",
+			"I knew you'd call, {username}"
 		],
 		"high": [
-			"Handling a high number of connections currently, try again later",
-			"Hold on, I'm on the phone"
+			"Try again later, all these connections are a bit much to handle",
+			"Hang on, I'm on the phone",
+			"Did a disaster happen or something, the line's all bogged down",
+			"Sorry about that, the line's at capacity",
+			"How about *YOU* try processing hundreds of conversations at once??",
+			"Service is spotty, try waving your phone around the room"
 		]
 	},
 	"music": {
 		"general": [
-			"Milgram milgram milgram",
+			"Have you ever heard of Kasane Teto by chance",
 			"Can't stop the beat",
 			"Everything brainless likes music!"
 		],

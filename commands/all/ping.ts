@@ -1,6 +1,5 @@
 import type { Bot } from "@botnet/bots/bot"
 import { ping } from "@botnet/config/pools/pooler"
-import { safeReply } from "@botnet/util/reply"
 import {
 	ChatInputCommandInteraction,
 	MessageFlags,
@@ -12,11 +11,14 @@ export default {
 		.setName("ping")
 		.setDescription("Responds with the ping of the bot"),
 	async execute(bot: Bot, interaction: ChatInputCommandInteraction) {
-		const latency = Date.now() - interaction.createdTimestamp
+		await interaction.deferReply({ flags: MessageFlags.Ephemeral })
+		const reply = await interaction.fetchReply()
+
+		const latency = reply.createdTimestamp - interaction.createdTimestamp
 		const response = ping(latency, { bot })
-		await safeReply(interaction, {
-			content: `${response.chosen}\nPing: \`${latency}ms\``,
-			flags: MessageFlags.Ephemeral
+
+		interaction.editReply({
+			content: `${response.chosen}\nPing: \`${latency}ms\``
 		})
 	}
 }
