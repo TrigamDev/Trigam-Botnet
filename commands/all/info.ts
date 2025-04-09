@@ -9,12 +9,17 @@ import {
 	TimestampStyles
 } from "discord.js"
 
+// https://github.com/GDColon/Polaris-Open/blob/main/commands/slash/botstatus.js
 export default {
 	data: new SlashCommandBuilder()
 		.setName("info")
 		.setDescription("Displays some basic information about the bot"),
 	async execute(bot: Bot, interaction: ChatInputCommandInteraction) {
+		// Fetch various data
 		const version = bot.config.version
+		const totalServers =
+			await bot.client.shard?.fetchClientValues("guilds.cache.size")
+
 		const infoEmbed = new EmbedBuilder({
 			title: bot.config.name,
 			description: bot.config.description ?? "",
@@ -38,13 +43,20 @@ export default {
 						TimestampStyles.RelativeTime
 					),
 					inline: true
-				}, {
+				},
+				{
 					name: "Shard",
-					value: `${interaction.guild?.shardId}/${(bot.client.shard?.count ?? 1 ) - 1}`,
+					value: `${interaction.guild?.shardId}/${(bot.client.shard?.count ?? 1) - 1}`,
 					inline: true
-				}, {
+				},
+				{
 					name: "Servers",
-					value: `\`${bot.client.guilds.cache.size}\``,
+					value: `${bot.client.guilds.cache.size}/${totalServers}`,
+					inline: true
+				},
+				{
+					name: "Memory Usage",
+					value: `${Number((process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2))} MB`,
 					inline: true
 				}
 			]
