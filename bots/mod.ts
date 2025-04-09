@@ -1,7 +1,7 @@
 import { Bot, Stage } from "@botnet/bots/bot"
 import { ActivityType, GatewayIntentBits } from "discord.js"
 
-export const Moderation = new Bot({
+export default new Bot({
 	name: "Hammer",
 	description:
 		"A bot focused on providing useful moderation tools, empowering you to keep your server safe",
@@ -23,7 +23,7 @@ export const Moderation = new Bot({
 	color: 0x6f1798,
 
 	console: {
-		prefix: "Hammer] ",
+		prefix: "{bot|name} #{bot|shard|id}] ",
 		color: "\x1b[35m"
 	},
 

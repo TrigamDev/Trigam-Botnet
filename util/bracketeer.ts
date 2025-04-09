@@ -107,8 +107,9 @@ export class Bracketeer {
 			// Bot
 			bot: {
 				name: this.context.bot?.config.name ?? "",
-				shard: () => {
-					return String(this.context.bot?.client.shard) ?? "0"
+				shard: {
+					id: String(this.context.bot?.shardId) ?? "0",
+					count: String(this.context.bot?.client.shard?.count) ?? "0"
 				},
 				xp: {
 					level: "0"

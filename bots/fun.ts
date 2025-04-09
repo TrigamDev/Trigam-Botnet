@@ -1,7 +1,7 @@
 import { Bot, Stage } from "@botnet/bots/bot"
 import { ActivityType, GatewayIntentBits } from "discord.js"
 
-export const Fun = new Bot({
+export default new Bot({
 	name: "Box",
 	description:
 		"A bot focused around fun, silly commands to add some flavor to your server",
@@ -23,7 +23,7 @@ export const Fun = new Bot({
 	color: 0x3f48cc,
 
 	console: {
-		prefix: "Box] ",
+		prefix: "{bot|name} #{bot|shard|id}] ",
 		color: "\x1b[34m"
 	},
 

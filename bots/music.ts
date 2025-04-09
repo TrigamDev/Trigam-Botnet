@@ -1,7 +1,7 @@
 import { Bot, Stage } from "@botnet/bots/bot"
 import { ActivityType, GatewayIntentBits } from "discord.js"
 
-export const Music = new Bot({
+export default new Bot({
 	name: "Radio",
 	description:
 		"A bot focused on playing music right into voice channels, giving some background music to whatever madness is happening in call",
@@ -23,7 +23,7 @@ export const Music = new Bot({
 	color: 0xef233c,
 
 	console: {
-		prefix: "Radio] ",
+		prefix: "{bot|name} #{bot|shard|id}] ",
 		color: "\x1b[31m"
 	},
 

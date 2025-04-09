@@ -1,21 +1,28 @@
-import { Fun } from "@botnet/bots/fun"
-import { Util } from "@botnet/bots/util"
-import { Moderation } from "@botnet/bots/mod"
-import { Games } from "@botnet/bots/games"
-import { Portal } from "@botnet/bots/portal"
-import { Music } from "@botnet/bots/music"
-import { CustomCommands } from "@botnet/bots/cc"
-import type { Bot } from "@botnet/bots/bot"
+import { readdir } from "fs/promises"
+import { ShardingManager } from "discord.js"
+import { join } from "path"
 
-const bots: Bot[] = [
-	Fun,
-	Util,
-	Moderation,
-	Games,
-	Portal,
-	Music,
-	CustomCommands
-]
-for (const bot of bots) {
-	bot.login()
+const botFolder = join(__dirname, "./bots")
+const botFiles = (await readdir(botFolder)).filter(
+	(botFile) => botFile != "bot.ts"
+)
+
+for (const botFile of botFiles) {
+	const manager = new ShardingManager(`${botFolder}/${botFile}`, {
+		token: getTokenFromFile(botFile)
+	})
+
+	manager.on("shardCreate", (shard) =>
+		shard.on("ready", () => {
+			shard.send({ type: "ready", data: { shardId: shard.id } })
+		})
+	)
+
+	manager.spawn()
+}
+
+
+function getTokenFromFile(botFile: string): string {
+	const id = botFile.replace('.ts', '').toUpperCase()
+	return process.env[`TOKEN_${id}`] as string
 }

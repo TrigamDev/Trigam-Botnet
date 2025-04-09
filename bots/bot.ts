@@ -11,6 +11,8 @@ import type {
 	Snowflake
 } from "discord.js"
 import type { Command } from "@botnet/commands/command"
+import { login } from "@botnet/config/pools/pooler"
+import { Bracketeer } from "@botnet/util/bracketeer"
 
 // https://github.com/eritislami/evobot/blob/master/structs/Bot.ts
 export class Bot {
@@ -21,6 +23,7 @@ export class Bot {
 	public config: BotConfig
 
 	public started: number = 0
+	public shardId: number = -1
 
 	public constructor(config: BotConfig) {
 		this.client = new Client({
@@ -28,7 +31,20 @@ export class Bot {
 		})
 		this.config = config
 
-		this.started = Date.now()
+		this.login()
+
+		// Receive shard id (for niche functionality)
+		process.on("message", (message: any) => {
+			if (!message.type) return
+
+			switch (message.type) {
+				case "ready": {
+					this.shardId = message.data.shardId
+					this.log(login({ bot: this }).chosen)
+					break
+				}
+			}
+		})
 	}
 
 	public async login() {
@@ -36,6 +52,7 @@ export class Bot {
 		await this.registerEvents()
 
 		await this.client.login(this.config.token)
+		this.started = Date.now()
 	}
 
 	public async registerCommands() {
@@ -106,9 +123,10 @@ export class Bot {
 	}
 
 	public log(message: string) {
-		console.log(
-			`${this.config.console.color}${this.config.console.prefix}\x1b[0m${message}`
-		)
+		const bracketeer = new Bracketeer({ bot: this }, {})
+		const prefix = bracketeer.execute(this.config.console.prefix)
+		const msg = bracketeer.execute(message)
+		console.log(`${this.config.console.color}${prefix}\x1b[0m${msg}`)
 	}
 }
 

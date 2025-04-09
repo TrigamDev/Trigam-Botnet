@@ -1,7 +1,7 @@
 import { Bot, Stage } from "@botnet/bots/bot"
 import { ActivityType, GatewayIntentBits } from "discord.js"
 
-export const Portal = new Bot({
+export default new Bot({
 	name: "Phone",
 	description:
 		"A bot allowing you to connect channels from entirely different servers, bridging the gap and allowing different communities to talk with each other",
@@ -23,7 +23,7 @@ export const Portal = new Bot({
 	color: 0x11cf96,
 
 	console: {
-		prefix: "Phone] ",
+		prefix: "{bot|name} #{bot|shard|id}] ",
 		color: "\x1b[36m"
 	},
 

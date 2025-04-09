@@ -38,11 +38,11 @@ export default {
 						TimestampStyles.RelativeTime
 					),
 					inline: true
-				}, /*{
+				}, {
 					name: "Shard",
-					value: `${bot.client.shard}/${bot.client.shard?.count ?? 1}`,
+					value: `${interaction.guild?.shardId}/${(bot.client.shard?.count ?? 1 ) - 1}`,
 					inline: true
-				},*/ {
+				}, {
 					name: "Servers",
 					value: `\`${bot.client.guilds.cache.size}\``,
 					inline: true
