@@ -3,6 +3,8 @@ import { ActivityType, GatewayIntentBits } from "discord.js"
 
 export const Moderation = new Bot({
 	name: "Hammer",
+	description:
+		"A bot focused on providing useful moderation tools, empowering you to keep your server safe",
 	id: "mod",
 	version: {
 		major: 0,
@@ -17,6 +19,8 @@ export const Moderation = new Bot({
 		name: "over the server!",
 		type: ActivityType.Watching
 	},
+
+	color: 0x6f1798,
 
 	console: {
 		prefix: "Hammer] ",

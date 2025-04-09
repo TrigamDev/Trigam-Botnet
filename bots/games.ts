@@ -3,6 +3,8 @@ import { ActivityType, GatewayIntentBits } from "discord.js"
 
 export const Games = new Bot({
 	name: "Joystick",
+	description:
+		"A bot focused around small, text-based games that you can play right from Discord",
 	id: "games",
 	version: {
 		major: 0,
@@ -17,6 +19,8 @@ export const Games = new Bot({
 		name: "games with you!",
 		type: ActivityType.Playing
 	},
+
+	color: 0x159f31,
 
 	console: {
 		prefix: "Joystick] ",

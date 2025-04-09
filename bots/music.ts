@@ -3,6 +3,8 @@ import { ActivityType, GatewayIntentBits } from "discord.js"
 
 export const Music = new Bot({
 	name: "Radio",
+	description:
+		"A bot focused on playing music right into voice channels, giving some background music to whatever madness is happening in call",
 	id: "music",
 	version: {
 		major: 0,
@@ -17,6 +19,8 @@ export const Music = new Bot({
 		name: "to your tunes!",
 		type: ActivityType.Listening
 	},
+
+	color: 0xef233c,
 
 	console: {
 		prefix: "Radio] ",

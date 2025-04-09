@@ -3,6 +3,8 @@ import { ActivityType, GatewayIntentBits } from "discord.js"
 
 export const Portal = new Bot({
 	name: "Phone",
+	description:
+		"A bot allowing you to connect channels from entirely different servers, bridging the gap and allowing different communities to talk with each other",
 	id: "portal",
 	version: {
 		major: 0,
@@ -17,6 +19,8 @@ export const Portal = new Bot({
 		name: "for messages for you!",
 		type: ActivityType.Listening
 	},
+
+	color: 0x11cf96,
 
 	console: {
 		prefix: "Phone] ",

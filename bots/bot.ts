@@ -20,11 +20,15 @@ export class Bot {
 
 	public config: BotConfig
 
+	public started: number = 0
+
 	public constructor(config: BotConfig) {
 		this.client = new Client({
 			intents: config.intents
 		})
 		this.config = config
+
+		this.started = Date.now()
 	}
 
 	public async login() {
@@ -115,14 +119,15 @@ export type BotVersion = {
 	stage: Stage
 }
 export enum Stage {
-	Development,
-	Alpha,
-	Beta,
-	Release
+	Development = "dev",
+	Alpha = "alpha",
+	Beta = "beta",
+	Release = "release"
 }
 
 export type BotConfig = {
 	name: string
+	description: string
 	id: string
 	version: BotVersion
 
@@ -132,6 +137,8 @@ export type BotConfig = {
 		name: string
 		type: ActivityType
 	}
+
+	color: number
 
 	console: {
 		prefix: string
