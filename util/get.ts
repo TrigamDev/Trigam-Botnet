@@ -1,24 +1,27 @@
 import type { Bot } from '@botnet/bots/bot'
 import type { GuildMember, Interaction, User } from 'discord.js'
 
-export function getUser (
+export async function getUser (
 	searchUser: string,
 	interaction: Interaction,
 	bot: Bot
-): User | null {
+): Promise<User | null> {
 	// Find user by ID
-	let foundUser: User | undefined = bot.client.users.cache.find( ( user ) => {
-		return user.id.toLowerCase() === searchUser.toLowerCase()
-	})
+	let foundUser: User | null = await bot.client.users
+		.fetch( searchUser )
+		.catch( () => {
+			return null
+		})
 
 	// Find user by username
 	if ( !foundUser )
-		foundUser = bot.client.users.cache.find( ( user ) => {
-			return user.username.toLowerCase() === searchUser.toLowerCase()
-		})
+		foundUser =
+			bot.client.users.cache.find( ( user ) => {
+				return user.username.toLowerCase() === searchUser.toLowerCase()
+			}) ?? null
 
 	// Find user by guild member
-	if ( !foundUser ) foundUser = getMember( searchUser, interaction )?.user
+	if ( !foundUser ) foundUser = getMember( searchUser, interaction )?.user ?? null
 
 	return foundUser ?? null
 }
@@ -47,4 +50,15 @@ export function getMember (
 		})
 
 	return foundMember ?? null
+}
+
+export async function getUserAndMember (
+	searchUser: string,
+	interaction: Interaction,
+	bot: Bot
+): Promise<[User | null, GuildMember | null]> {
+	return [
+		await getUser( searchUser, interaction, bot ),
+		getMember( searchUser, interaction )
+	]
 }

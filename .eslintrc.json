@@ -17,7 +17,6 @@
 		"semi": ["error", "never"],
 		"quotes": ["error", "single"],
 		"curly": ["error", "multi"],
-		"multiline-comment-style": ["error", "starred-block"],
 		"@stylistic/comma-style": "error",
 
 		// Style (Spacing/Lines)
@@ -35,6 +34,7 @@
 			{ "beforeBlockComment": true }
 		],
 		"@stylistic/lines-between-class-members": ["error", "always"],
+		"@stylistic/max-len": ["error", { "code": 120 }],
 		"@stylistic/rest-spread-spacing": ["error", "never"],
 		"@stylistic/space-before-blocks": ["error", "always"],
 		"@stylistic/space-before-function-paren": ["error", "always"],
@@ -60,7 +60,6 @@
 		"operator-assignment": ["error", "always"],
 		"prefer-arrow-callback": "error",
 		"prefer-const": "error",
-		"prefer-destructuring": "error",
 		"prefer-named-capture-group": "error",
 		"prefer-object-spread": "error",
 		"prefer-regex-literals": "error",
@@ -84,14 +83,7 @@
 		"default-case": "error",
 		"eqeqeq": "error",
 		"func-names": ["error", "always"],
-		"id-denylist": [
-			"error",
-			"error",
-			"err",
-			"e",
-			"cb",
-			"callback"
-		],
+		"id-denylist": ["error", "error", "err", "e", "cb", "callback"],
 		"no-empty-function": "error",
 		"no-empty-static-block": "error",
 		"no-eq-null": "error",

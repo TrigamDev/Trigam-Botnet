@@ -1,0 +1,74 @@
+import type { Bot } from '@botnet/bots/bot'
+import type { Command } from '@botnet/commands/command'
+import { Bracketeer } from '@botnet/classes/bracketeer/bracketeer'
+import {
+	ApplicationCommandOptionType,
+	ChatInputCommandInteraction
+} from 'discord.js'
+
+const commandOptions = [
+	{
+		type: ApplicationCommandOptionType.String,
+		name: 'args',
+		description:
+			'The arguments to execute the command with (seperated by commas)',
+		required: false
+	},
+	{
+		type: ApplicationCommandOptionType.Boolean,
+		name: 'debug',
+		description: 'Whether to show the execution steps of the command',
+		required: false
+	}
+]
+
+export default {
+	data: {
+		name: 'exec',
+		description: 'Execute custom command code',
+		options: [
+			{
+				type: ApplicationCommandOptionType.Subcommand,
+				name: 'text',
+				description: 'Run code from text',
+				options: [
+					{
+						type: ApplicationCommandOptionType.String,
+						name: 'code',
+						description: 'The code to run',
+						required: true
+					}
+				].concat( commandOptions )
+			},
+			{
+				type: ApplicationCommandOptionType.Subcommand,
+				name: 'file',
+				description: 'Run code from a text file',
+				options: [
+					{
+						type: ApplicationCommandOptionType.Attachment,
+						name: 'code',
+						description: 'The text file to run',
+						required: true
+					}
+				].concat( commandOptions )
+			}
+		]
+	},
+	async execute ( bot: Bot, interaction: ChatInputCommandInteraction ) {
+		let customCode = ''
+
+		// Get the custom command code, if submitting direct text
+		const submittedCode = interaction.options.getString( 'code' )
+		if ( submittedCode ) customCode = submittedCode
+
+		// Get the contents of the text file, if submitted
+
+		// Execute the command
+		const bracketeer = new Bracketeer({ bot, interaction }, {})
+		const response = await bracketeer.execute( customCode )
+
+		// Reply
+		await interaction.reply({ content: response.slice( 0, 2000 ) })
+	}
+} as Command

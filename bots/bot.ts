@@ -3,7 +3,7 @@ import { readdir } from 'fs/promises'
 import { join } from 'path'
 
 import { login } from '@botnet/config/pools/pooler'
-import { Bracketeer } from '@botnet/util/bracketeer'
+import { Bracketeer } from '@botnet/classes/bracketeer/bracketeer'
 
 import { devGuilds } from '@botnet/config/whitelist'
 
@@ -70,13 +70,14 @@ export class Bot {
 		this.login()
 
 		// Receive shard id (for niche functionality)
-		process.on( 'message', ( message: any ) => {
+		process.on( 'message', async ( message: any ) => {
 			if ( !message.type ) return
 
 			switch ( message.type ) {
 				case 'ready': {
 					this.shardId = message.data.shardId
-					this.log( login({ bot: this }).chosen )
+					const loginMessage = await login({ bot: this })
+					await this.log( loginMessage.chosen )
 					break
 				}
 				default:
@@ -161,10 +162,10 @@ export class Bot {
 		}
 	}
 
-	public log ( message: string ) {
+	public async log ( message: string ) {
 		const bracketeer = new Bracketeer({ bot: this }, {})
-		const prefix = bracketeer.execute( this.config.console.prefix )
-		const msg = bracketeer.execute( message )
+		const prefix = await bracketeer.execute( this.config.console.prefix )
+		const msg = await bracketeer.execute( message )
 		console.log( `${this.config.console.color}${prefix}\x1b[0m${msg}` )
 	}
 }
