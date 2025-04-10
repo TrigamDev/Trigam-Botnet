@@ -1,5 +1,5 @@
 import type { Bot } from '@botnet/bots/bot'
-import { ping } from '@botnet/config/pools/pooler'
+import { ping } from '@botnet/classes/pooler'
 import {
 	ChatInputCommandInteraction,
 	MessageFlags,
@@ -15,7 +15,7 @@ export default {
 		const reply = await interaction.fetchReply()
 
 		const latency = reply.createdTimestamp - interaction.createdTimestamp
-		const pingResponse = ping( latency, { bot })
+		const pingResponse = await ping( latency, { bot })
 
 		interaction.editReply({
 			content: `${pingResponse.chosen}\nPing: \`${latency}ms\``

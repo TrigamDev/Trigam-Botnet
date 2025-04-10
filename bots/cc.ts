@@ -3,8 +3,7 @@ import { ActivityType, GatewayIntentBits } from 'discord.js'
 
 export default new Bot({
 	name: 'Cog',
-	description:
-		'A bot providing a powerful (and completely original) custom command engine, allowing you to create your own custom commands',
+	description: 'A bot providing a powerful (and completely original) custom command engine, allowing you to create your own custom commands',
 	botId: 'cc',
 	version: {
 		major: 0,

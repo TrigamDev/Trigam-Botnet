@@ -4,32 +4,6 @@ import type { Interaction } from 'discord.js'
 import * as config from '@botnet/config/bracketeer'
 import { getUserAndMember } from '../../util/get'
 
-// #region Types
-export interface Context {
-	[key: string]: any
-	bot?: Bot
-	interaction?: Interaction
-}
-
-interface Settings {
-	maxIterations?: number
-}
-
-interface Variables {
-	[varName: string]: string
-}
-
-type Response = string | null | Promise<string | null>
-type ResponseExecutor =
-	| Response
-	| ( ( ...args: any[] ) => Response )
-	| { [key: string]: ResponseExecutor }
-
-interface Responses {
-	[key: string]: ResponseExecutor | Promise<ResponseExecutor>
-}
-// #endregion
-
 export class Bracketeer {
 	private context: Context
 
@@ -275,4 +249,25 @@ export class Bracketeer {
 			}
 		}
 	}
+}
+
+export interface Context {
+	[key: string]: any
+	bot?: Bot
+	interaction?: Interaction
+}
+
+interface Settings {
+	maxIterations?: number
+}
+
+interface Variables {
+	[varName: string]: string
+}
+
+type Response = string | null | Promise<string | null>
+type ResponseExecutor = Response | ( ( ...args: any[] ) => Response ) | Responses
+
+interface Responses {
+	[key: string]: ResponseExecutor | Promise<ResponseExecutor>
 }

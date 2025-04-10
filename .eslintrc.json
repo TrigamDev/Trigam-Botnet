@@ -34,7 +34,7 @@
 			{ "beforeBlockComment": true }
 		],
 		"@stylistic/lines-between-class-members": ["error", "always"],
-		"@stylistic/max-len": ["error", { "code": 120 }],
+		"@stylistic/max-len": ["error", { "code": 120, "ignoreStrings": true }],
 		"@stylistic/rest-spread-spacing": ["error", "never"],
 		"@stylistic/space-before-blocks": ["error", "always"],
 		"@stylistic/space-before-function-paren": ["error", "always"],
@@ -71,7 +71,8 @@
 
 		// Disambiguation
 		"block-scoped-var": "error",
-		"no-use-before-define": [
+		"no-use-before-define": "off",
+		"@typescript-eslint/no-use-before-define": [
 			"error",
 			{
 				"functions": false,
