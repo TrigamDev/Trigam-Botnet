@@ -1,0 +1,164 @@
+{
+	"plugins": ["@typescript-eslint", "@stylistic"],
+	"parser": "@typescript-eslint/parser",
+
+	"parserOptions": {
+		"sourceType": "module"
+	},
+
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"prettier"
+	],
+
+	"rules": {
+		// Style
+		"semi": ["error", "never"],
+		"quotes": ["error", "single"],
+		"curly": ["error", "multi"],
+		"multiline-comment-style": ["error", "starred-block"],
+		"@stylistic/comma-style": "error",
+
+		// Style (Spacing/Lines)
+		"@stylistic/array-bracket-spacing": ["error", "always"],
+		"@stylistic/block-spacing": ["error", "always"],
+		"@stylistic/brace-style": "error",
+		"@stylistic/comma-spacing": "error",
+		"@stylistic/computed-property-spacing": ["error", "always"],
+		"@stylistic/dot-location": ["error", "property"],
+		"@stylistic/implicit-arrow-linebreak": ["error", "beside"],
+		"@stylistic/key-spacing": ["error", { "beforeColon": false }],
+		"@stylistic/keyword-spacing": ["error", { "before": true }],
+		"@stylistic/lines-around-comment": [
+			"error",
+			{ "beforeBlockComment": true }
+		],
+		"@stylistic/lines-between-class-members": ["error", "always"],
+		"@stylistic/rest-spread-spacing": ["error", "never"],
+		"@stylistic/space-before-blocks": ["error", "always"],
+		"@stylistic/space-before-function-paren": ["error", "always"],
+		"space-in-parens": ["error", "always", { "exceptions": ["{}"] }],
+
+		// Convention/Consistency
+		"line-comment-position": ["error", { "position": "above" }],
+		"arrow-body-style": ["error", "always"],
+		"camelcase": "error",
+		"class-methods-use-this": "error",
+		"consistent-return": "error",
+		"default-case-last": "error",
+		"default-param-last": "error",
+		//"dot-notation": "error",
+		"func-name-matching": "error",
+		"func-style": ["error", "declaration"],
+		"grouped-accessor-pairs": "error",
+		"no-array-constructor": "error",
+		"no-underscore-dangle": "error",
+		"no-var": "error",
+		"no-void": "error",
+		"object-shorthand": "error",
+		"operator-assignment": ["error", "always"],
+		"prefer-arrow-callback": "error",
+		"prefer-const": "error",
+		"prefer-destructuring": "error",
+		"prefer-named-capture-group": "error",
+		"prefer-object-spread": "error",
+		"prefer-regex-literals": "error",
+		"prefer-rest-params": "error",
+		"prefer-spread": "error",
+		"prefer-template": "error",
+		"symbol-description": "error",
+		"@typescript-eslint/array-type": "error",
+
+		// Disambiguation
+		"block-scoped-var": "error",
+		"no-use-before-define": [
+			"error",
+			{
+				"functions": false,
+				"classes": false,
+				"variables": true,
+				"allowNamedExports": true
+			}
+		],
+		"default-case": "error",
+		"eqeqeq": "error",
+		"func-names": ["error", "always"],
+		"id-denylist": [
+			"error",
+			"error",
+			"err",
+			"e",
+			"cb",
+			"callback"
+		],
+		"no-empty-function": "error",
+		"no-empty-static-block": "error",
+		"no-eq-null": "error",
+		"no-extend-native": "error",
+		"no-implicit-coercion": "error",
+		"no-implicit-globals": "error",
+		"no-label-var": "error",
+		"no-loop-func": "error",
+		"no-multi-assign": "error",
+		"no-nested-ternary": "error",
+		"no-new-wrappers": "error",
+		"no-object-constructor": "error",
+		"no-return-assign": "error",
+		"no-sequences": "error",
+		"no-shadow": "error",
+		"no-throw-literal": "error",
+		"no-undefined": "error",
+		"prefer-promise-reject-errors": "error",
+		"radix": "error",
+		"@typescript-eslint/no-explicit-any": "off",
+
+		// Logic Errors
+		"array-callback-return": "error",
+		"no-constant-binary-expression": "error",
+		"no-constructor-return": "error",
+		"no-new-native-nonconstructor": "error",
+		"no-promise-executor-return": "error",
+		"no-self-compare": "error",
+		"no-template-curly-in-string": "error",
+		"no-unmodified-loop-condition": "error",
+		"no-unreachable-loop": "error",
+		"no-unused-private-class-members": "error",
+		"require-atomic-updates": "error",
+		"no-invalid-this": "error",
+		"no-iterator": "error",
+		"no-new": "error",
+
+		// Inefficiences
+		"no-caller": "error",
+		"no-extra-bind": "error",
+		"no-extra-label": "error",
+		"no-lonely-if": "error",
+		"no-undef-init": "error",
+		"no-unneeded-ternary": "error",
+		"no-unused-expressions": "warn",
+		"no-useless-call": "error",
+		"no-useless-computed-key": "error",
+		"no-useless-concat": "error",
+		"no-useless-constructor": "error",
+		"no-useless-rename": "error",
+		"no-useless-return": "error",
+		"require-await": "error",
+
+		// Security
+		"no-eval": "error",
+		"no-implied-eval": "error",
+		"no-new-func": "error",
+		"no-script-url": "error",
+
+		// Deprecated
+		"no-octal-escape": "error",
+		"no-proto": "error",
+		"prefer-exponentiation-operator": "error",
+		"prefer-numeric-literals": "error",
+		"prefer-object-has-own": "error",
+
+		// Conflicts
+		"@typescript-eslint/no-unused-vars": "off"
+	}
+}

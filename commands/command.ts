@@ -1,8 +1,9 @@
-import type { SlashCommandBuilder } from "discord.js"
+import type { Bot } from '@botnet/bots/bot'
+import type { ApplicationCommandData, Interaction } from 'discord.js'
 
 export interface Command {
 	permissions?: string[]
 	cooldown?: number
-	data: SlashCommandBuilder
-	execute(...args: any): any
+	data: ApplicationCommandData
+	execute( bot: Bot, interaction: Interaction ): void
 }

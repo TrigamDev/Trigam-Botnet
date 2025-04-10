@@ -1,21 +1,21 @@
-import seedrandom from "seedrandom"
+import seedrandom from 'seedrandom'
 
-export function randomElement<Type>(
+export function randomElement<Type> (
 	array: Type[],
 	seed?: string | undefined
-): Type | undefined {
-	if (!array || array.length == 0) return undefined
+): Type | null {
+	if ( !array || array.length === 0 ) return null
 
-	let random = seedrandom(seed)
-	let randIndex = Math.floor(random() * array.length)
-	return array[randIndex]
+	const random = seedrandom( seed )
+	const randIndex = Math.floor( random() * array.length )
+	return array[ randIndex ] ?? null
 }
 
-export function randomRange(
+export function randomRange (
 	min: number,
 	max: number,
 	seed?: string | undefined
 ): number {
-	let random = seedrandom(seed)
-	return Math.floor(random() * (max - min + 1) + min)
+	const random = seedrandom( seed )
+	return Math.floor( random() * ( max - min + 1 ) + min )
 }

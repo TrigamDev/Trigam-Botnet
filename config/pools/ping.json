@@ -6,7 +6,7 @@
 			"I'm definitely a bot",
 			"Pong!",
 			"Hi, what's up?",
-			"{@}\nHey, you asked to be pinged!",
+			"{user|@}\nHey, you asked to be pinged!",
 			"Ping-ito, ergo sum",
 			"At your service!",
 			"This response requires Botnet Premium™️",
