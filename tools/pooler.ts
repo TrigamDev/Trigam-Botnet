@@ -19,7 +19,7 @@ export interface FunctionPool {
 export async function base (
 	pool: string[],
 	context: Context,
-	seed: string | undefined
+	seed?: string
 ): Promise<PoolElement> {
 	const bracketeer = new Bracketeer( context, {})
 	return {
