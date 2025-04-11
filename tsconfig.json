@@ -6,7 +6,8 @@
 			"@botnet/*": ["./*"],
 			"@commands/*": ["./commands/*"],
 			"@events/*": ["./events/*"],
-			"@pools/*": ["./config/pools/*"]
+			"@pools/*": ["./config/pools/*"],
+			"@tools/*": ["./tools/*"]
 		},
 
 		// Type Checking

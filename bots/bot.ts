@@ -1,20 +1,20 @@
-import { Client, Collection, REST, Routes } from 'discord.js'
-import { readdir } from 'fs/promises'
-import { join } from 'path'
+import { Client, Collection, REST, Routes } from "discord.js"
+import { readdir } from "fs/promises"
+import { join } from "path"
 
-import { login } from '@botnet/tools/pooler'
-import { Bracketeer } from '@botnet/tools/bracketeer/bracketeer'
+import { login } from "@botnet/tools/pooler"
+import { Bracketeer } from "@botnet/tools/bracketeer/bracketeer"
 
-import { devGuilds } from '@botnet/config/whitelist'
+import { devGuilds } from "@botnet/config/whitelist"
 
-import type { ActivityType, GatewayIntentBits, Snowflake } from 'discord.js'
-import type { Command } from '@botnet/commands/command'
+import type { ActivityType, GatewayIntentBits, Snowflake } from "discord.js"
+import type { Command } from "@botnet/commands/command"
 
 export enum Stage {
-	Development = 'dev',
-	Alpha = 'alpha',
-	Beta = 'beta',
-	Release = 'release'
+	Development = "dev",
+	Alpha = "alpha",
+	Beta = "beta",
+	Release = "release"
 }
 export type BotVersion = {
 	major: number
@@ -70,11 +70,11 @@ export class Bot {
 		this.login()
 
 		// Receive shard id (for niche functionality)
-		process.on( 'message', async ( message: any ) => {
+		process.on( "message", async ( message: any ) => {
 			if ( !message.type ) return
 
 			switch ( message.type ) {
-				case 'ready': {
+				case "ready": {
 					this.shardId = message.data.shardId
 					const loginMessage = await login({ bot: this })
 					await this.log( loginMessage.chosen )
@@ -95,16 +95,16 @@ export class Bot {
 	}
 
 	public async registerCommands () {
-		const commandFolder = join( __dirname, '../commands' )
+		const commandFolder = join( __dirname, "../commands" )
 
 		// Get all command files
-		const commandDirs: string[] = [ 'all', this.config.botId ]
+		const commandDirs: string[] = [ "all", this.config.botId ]
 
 		// Loop through the command files and register them
 		for ( const commandDir of commandDirs ) {
 			const dir = join( commandFolder, commandDir )
 			const commandFiles = ( await readdir( dir ) ).filter( ( commandFile ) => {
-				return commandFile.endsWith( '.ts' )
+				return commandFile.endsWith( ".ts" )
 			})
 			for ( const commandFile of commandFiles ) {
 				const command: Command = ( await import( `${dir}/${commandFile}` ) )
@@ -124,7 +124,7 @@ export class Bot {
 		// Set commands in whitelisted servers
 		for ( const guildId of devGuilds.guilds ) {
 			const isInGuild =
-				typeof this.client.guilds.cache.get( guildId ) !== 'undefined'
+				typeof this.client.guilds.cache.get( guildId ) !== "undefined"
 			if ( !isInGuild ) continue
 
 			const server = await this.client.guilds.fetch( guildId )
@@ -141,11 +141,11 @@ export class Bot {
 	}
 
 	private async registerEvents () {
-		const eventFolder = join( __dirname, '../events' )
+		const eventFolder = join( __dirname, "../events" )
 
 		// Get all event files
 		const eventFiles = ( await readdir( eventFolder ) ).filter( ( eventFile ) => {
-			return eventFile.endsWith( '.ts' )
+			return eventFile.endsWith( ".ts" )
 		})
 
 		// Loop through the event files and register them

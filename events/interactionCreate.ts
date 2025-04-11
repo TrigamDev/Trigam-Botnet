@@ -1,6 +1,6 @@
-import type { Bot } from '@botnet/bots/bot'
-import { safeReply } from '@botnet/util/reply'
-import { Events, MessageFlags, type Interaction } from 'discord.js'
+import type { Bot } from "@botnet/bots/bot"
+import { safeReply } from "@botnet/util/reply"
+import { Events, MessageFlags, type Interaction } from "discord.js"
 
 export default {
 	name: Events.InteractionCreate,
@@ -21,7 +21,7 @@ export default {
 		} catch ( commandError ) {
 			console.error( commandError )
 			await safeReply( interaction, {
-				content: 'There was an error while executing this command!',
+				content: "There was an error while executing this command!",
 				flags: MessageFlags.Ephemeral
 			})
 		}

@@ -1,9 +1,9 @@
-import { randomElement } from '@botnet/util/random'
+import { randomElement } from "@botnet/util/random"
 
-import { Bracketeer, type Context } from '@botnet/tools/bracketeer/bracketeer'
+import { Bracketeer, type Context } from "@tools/bracketeer/bracketeer"
 
-import logins from '@pools/login.json'
-import pings from '@pools/ping.json'
+import logins from "@pools/login.json"
+import pings from "@pools/ping.json"
 
 export interface PoolElement {
 	chosen: string
@@ -23,7 +23,7 @@ export async function base (
 ): Promise<PoolElement> {
 	const bracketeer = new Bracketeer( context, {})
 	return {
-		chosen: await bracketeer.execute( randomElement( pool, seed ) ?? '' ),
+		chosen: await bracketeer.execute( randomElement( pool, seed ) ?? "" ),
 		pool
 	}
 }
@@ -33,7 +33,7 @@ export async function login (
 	seed?: string
 ): Promise<PoolElement> {
 	// Randomly choose between the general pool and bot-specific pool
-	const botId: string = context.bot?.config.botId ?? 'general'
+	const botId: string = context.bot?.config.botId ?? "general"
 	const pool = randomElement( [ logins.general, ( logins as KeyedPool )[ botId ] ] )
 	return await base( pool as string[], context, seed )
 }
@@ -49,7 +49,7 @@ export async function ping (
 	seed?: string
 ): Promise<PoolElement> {
 	// Randomly choose between general pool and bot-specific pool
-	const botId: string = context.bot?.config.botId ?? 'general'
+	const botId: string = context.bot?.config.botId ?? "general"
 	const pool: PingPool = randomElement( [
 		pings.general,
 		( pings as KeyedPool )[ botId ]

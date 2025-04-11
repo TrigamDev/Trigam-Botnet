@@ -2,7 +2,7 @@ import type {
 	ButtonInteraction,
 	CommandInteraction,
 	InteractionReplyOptions
-} from 'discord.js'
+} from "discord.js"
 
 // https://github.com/eritislami/evobot/blob/master/utils/safeReply.ts
 export async function safeReply (

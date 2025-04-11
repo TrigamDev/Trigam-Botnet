@@ -3,16 +3,16 @@
 	"module": "index.ts",
 	"type": "module",
 	"devDependencies": {
-		"@stylistic/eslint-plugin": "3.1.0",
 		"@types/bun": "latest",
-		"@types/seedrandom": "^3.0.8",
-		"@typescript-eslint/eslint-plugin": "^8.29.0",
-		"@typescript-eslint/parser": "^8.29.0",
 		"eslint": "8.52.0",
-		"eslint-config-prettier": "^10.1.1",
+		"@stylistic/eslint-plugin": "3.1.0",
+		"typescript-eslint": "^8.29.0",
+		"@typescript-eslint/parser": "^8.29.0",
+		"@typescript-eslint/eslint-plugin": "^8.29.0",
 		"prettier": "^3.5.3",
 		"prettier-eslint": "^16.3.0",
-		"typescript-eslint": "^8.29.0"
+		"eslint-config-prettier": "^10.1.1",
+		"@types/seedrandom": "^3.0.8"
 	},
 	"peerDependencies": {
 		"typescript": "^5.0.0"
@@ -23,6 +23,7 @@
 	},
 
 	"scripts": {
-		"start": "bun index.ts"
+		"start": "bun index.ts",
+		"lint": "bunx eslint ."
 	}
 }

@@ -1,8 +1,8 @@
-import type { Bot } from '@botnet/bots/bot'
-import type { Interaction } from 'discord.js'
+import type { Bot } from "@botnet/bots/bot"
+import type { Interaction } from "discord.js"
 
-import * as config from '@botnet/config/bracketeer'
-import { getUserAndMember } from '../../util/get'
+import * as config from "@botnet/config/bracketeer"
+import { getUserAndMember } from "@botnet/util/get"
 
 export class Bracketeer {
 	private context: Context
@@ -45,7 +45,7 @@ export class Bracketeer {
 	 * ```
 	 */
 	public async execute ( input: string ): Promise<string> {
-		let previousInput = ''
+		let previousInput = ""
 		let iterations = 0
 		const maxIterations =
 			this.settings.maxIterations || config.maxIterations
@@ -62,7 +62,7 @@ export class Bracketeer {
 			const blocks = input.match( /{(?<block>[^{]+?)}/g )
 			if ( blocks )
 				for ( const block of blocks ) {
-					const blockArgs = block.slice( 1, -1 ).split( '|' )
+					const blockArgs = block.slice( 1, -1 ).split( "|" )
 					const substituted = await this.executeBlock( blockArgs )
 					input = input.replace( block, substituted )
 				}
@@ -92,7 +92,7 @@ export class Bracketeer {
 		block: string[],
 		parent?: string[]
 	): Promise<string> {
-		if ( block.length === 0 ) return ''
+		if ( block.length === 0 ) return ""
 		const fullBlock = [ ...block ]
 		const blockName: string = block.shift() as string
 
@@ -106,7 +106,7 @@ export class Bracketeer {
 		let scope = this.responses
 		for ( let scopeIndex = 0; scopeIndex < parent.length; scopeIndex++ ) {
 			const newScope = scope[ parent[ scopeIndex ] as string ] as string
-			if ( typeof newScope === 'object' && newScope ) scope = newScope
+			if ( typeof newScope === "object" && newScope ) scope = newScope
 		}
 
 		/*
@@ -114,24 +114,24 @@ export class Bracketeer {
 		 * (whether a good or bad thing, this allows overriding
 		 * the default responses. I'll allow it)
 		 */
-		if ( this.variables[ blockName ] || this.variables[ blockName ] === '' )
+		if ( this.variables[ blockName ] || this.variables[ blockName ] === "" )
 			return this.variables[ blockName ]
 
 		// Actual responses
-		const invalid = Bracketeer.escape( `{${fullBlock.join( '|' )}}` )
+		const invalid = Bracketeer.escape( `{${fullBlock.join( "|" )}}` )
 		const response = scope[ blockName ]
 		if ( response )
 			switch ( typeof response ) {
 				// Handle string responses
-				case 'string': {
+				case "string": {
 					return response ?? invalid
 				}
 				// Handle function responses
-				case 'function': {
+				case "function": {
 					return ( await response( ...block ) ) ?? invalid
 				}
 				// If an object, rescope and recurse
-				case 'object': {
+				case "object": {
 					parent?.push( blockName )
 					return this.executeBlock( block, parent )
 				}
@@ -160,9 +160,9 @@ export class Bracketeer {
 	 */
 	private static escape ( commandString: string ): string {
 		return commandString
-			.replace( /{/g, '❴' )
-			.replace( /}/g, '❵' )
-			.replace( /\|/g, '⏐' )
+			.replace( /{/g, "❴" )
+			.replace( /}/g, "❵" )
+			.replace( /\|/g, "⏐" )
 	}
 
 	/**
@@ -176,9 +176,9 @@ export class Bracketeer {
 	 */
 	private static unescape ( commandString: string ): string {
 		return commandString
-			.replace( /❴/g, '{' )
-			.replace( /❵/g, '}' )
-			.replace( /⏐/g, '|' )
+			.replace( /❴/g, "{" )
+			.replace( /❵/g, "}" )
+			.replace( /⏐/g, "|" )
 	}
 	// #endregion
 
@@ -187,18 +187,18 @@ export class Bracketeer {
 		this.settings = settings
 
 		this.variables = {
-			'#': '',
-			'//': '',
-			'\\n': '\n'
+			"#": "",
+			"//": "",
+			"\\n": "\n"
 		}
 
 		this.responses = {
 			// Bot
 			bot: {
-				name: this.context.bot?.config.name ?? '',
+				name: this.context.bot?.config.name ?? "",
 				shard: {
-					id: String( this.context.bot?.shardId ?? '0' ),
-					count: String( this.context.bot?.client.shard?.count ?? '0' )
+					id: String( this.context.bot?.shardId ?? "0" ),
+					count: String( this.context.bot?.client.shard?.count ?? "0" )
 				}
 			},
 
@@ -236,12 +236,12 @@ export class Bracketeer {
 
 				// User data
 				switch ( property ) {
-					case '@':
-					case 'mention': {
+					case "@":
+					case "mention": {
 						return (
 							member?.user.toString() ||
 							user?.toString() ||
-							'<@0>'
+							"<@0>"
 						)
 					}
 					default:

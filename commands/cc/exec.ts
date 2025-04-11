@@ -1,54 +1,54 @@
-import type { Bot } from '@botnet/bots/bot'
-import type { Command } from '@botnet/commands/command'
-import { Bracketeer } from '@botnet/tools/bracketeer/bracketeer'
+import type { Bot } from "@botnet/bots/bot"
+import type { Command } from "@botnet/commands/command"
+import { Bracketeer } from "@tools/bracketeer/bracketeer"
 import {
 	ApplicationCommandOptionType,
 	ChatInputCommandInteraction
-} from 'discord.js'
+} from "discord.js"
 
 const commandOptions = [
 	{
 		type: ApplicationCommandOptionType.String,
-		name: 'args',
+		name: "args",
 		description:
-			'The arguments to execute the command with (seperated by commas)',
+			"The arguments to execute the command with (seperated by commas)",
 		required: false
 	},
 	{
 		type: ApplicationCommandOptionType.Boolean,
-		name: 'debug',
-		description: 'Whether to show the execution steps of the command',
+		name: "debug",
+		description: "Whether to show the execution steps of the command",
 		required: false
 	}
 ]
 
 export default {
 	data: {
-		name: 'exec',
-		description: 'Execute custom command code',
+		name: "exec",
+		description: "Execute custom command code",
 		options: [
 			{
 				type: ApplicationCommandOptionType.Subcommand,
-				name: 'text',
-				description: 'Run code from text',
+				name: "text",
+				description: "Run code from text",
 				options: [
 					{
 						type: ApplicationCommandOptionType.String,
-						name: 'code',
-						description: 'The code to run',
+						name: "code",
+						description: "The code to run",
 						required: true
 					}
 				].concat( commandOptions )
 			},
 			{
 				type: ApplicationCommandOptionType.Subcommand,
-				name: 'file',
-				description: 'Run code from a text file',
+				name: "file",
+				description: "Run code from a text file",
 				options: [
 					{
 						type: ApplicationCommandOptionType.Attachment,
-						name: 'code',
-						description: 'The text file to run',
+						name: "code",
+						description: "The text file to run",
 						required: true
 					}
 				].concat( commandOptions )
@@ -56,10 +56,10 @@ export default {
 		]
 	},
 	async execute ( bot: Bot, interaction: ChatInputCommandInteraction ) {
-		let customCode = ''
+		let customCode = ""
 
 		// Get the custom command code, if submitting direct text
-		const submittedCode = interaction.options.getString( 'code' )
+		const submittedCode = interaction.options.getString( "code" )
 		if ( submittedCode ) customCode = submittedCode
 
 		// Get the contents of the text file, if submitted

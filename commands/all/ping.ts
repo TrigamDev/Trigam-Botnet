@@ -1,15 +1,13 @@
-import type { Bot } from '@botnet/bots/bot'
-import { ping } from '@botnet/tools/pooler'
-import {
-	ChatInputCommandInteraction,
-	MessageFlags,
-	SlashCommandBuilder
-} from 'discord.js'
+import type { Bot } from "@botnet/bots/bot"
+import { ping } from "@botnet/tools/pooler"
+import { ChatInputCommandInteraction, MessageFlags } from "discord.js"
+import type { Command } from "@commands/command"
 
 export default {
-	data: new SlashCommandBuilder()
-		.setName( 'ping' )
-		.setDescription( 'Responds with the ping of the bot' ),
+	data: {
+		name: "ping",
+		description: "Responds with the bot's latency"
+	},
 	async execute ( bot: Bot, interaction: ChatInputCommandInteraction ) {
 		await interaction.deferReply({ flags: MessageFlags.Ephemeral })
 		const reply = await interaction.fetchReply()
@@ -21,4 +19,4 @@ export default {
 			content: `${pingResponse.chosen}\nPing: \`${latency}ms\``
 		})
 	}
-}
+} as Command

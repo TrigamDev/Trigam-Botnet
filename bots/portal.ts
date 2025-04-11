@@ -1,11 +1,11 @@
-import { Bot, Stage } from '@botnet/bots/bot'
-import { ActivityType, GatewayIntentBits } from 'discord.js'
+import { Bot, Stage } from "@botnet/bots/bot"
+import { ActivityType, GatewayIntentBits } from "discord.js"
 
 export default new Bot({
-	name: 'Phone',
+	name: "Phone",
 	description:
-		'A bot allowing you to connect channels from entirely different servers, bridging the gap and allowing different communities to talk with each other',
-	botId: 'portal',
+		"A bot allowing you to connect channels from entirely different servers, bridging the gap and allowing different communities to talk with each other",
+	botId: "portal",
 	version: {
 		major: 0,
 		minor: 1,
@@ -16,17 +16,17 @@ export default new Bot({
 	intents: [ GatewayIntentBits.Guilds ],
 
 	activity: {
-		name: 'for messages for you!',
+		name: "for messages for you!",
 		type: ActivityType.Listening
 	},
 
 	color: 0x11cf96,
 
 	console: {
-		prefix: '{bot|name} #{bot|shard|id}] ',
-		color: '\x1b[36m'
+		prefix: "{bot|name} #{bot|shard|id}] ",
+		color: "\x1b[36m"
 	},
 
 	inDevelopment: true,
-	token: process.env[ 'TOKEN_PORTAL' ] as string
+	token: process.env[ "TOKEN_PORTAL" ] as string
 })
