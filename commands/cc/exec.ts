@@ -1,6 +1,6 @@
 import type { Bot } from '@botnet/bots/bot'
 import type { Command } from '@botnet/commands/command'
-import { Bracketeer } from '@botnet/classes/bracketeer/bracketeer'
+import { Bracketeer } from '@botnet/tools/bracketeer/bracketeer'
 import {
 	ApplicationCommandOptionType,
 	ChatInputCommandInteraction

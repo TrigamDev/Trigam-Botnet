@@ -2,8 +2,8 @@ import { Client, Collection, REST, Routes } from 'discord.js'
 import { readdir } from 'fs/promises'
 import { join } from 'path'
 
-import { login } from '@botnet/classes/pooler'
-import { Bracketeer } from '@botnet/classes/bracketeer/bracketeer'
+import { login } from '@botnet/tools/pooler'
+import { Bracketeer } from '@botnet/tools/bracketeer/bracketeer'
 
 import { devGuilds } from '@botnet/config/whitelist'
 

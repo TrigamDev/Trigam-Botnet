@@ -7,11 +7,8 @@ export async function getUser (
 	bot: Bot
 ): Promise<User | null> {
 	// Find user by ID
-	let foundUser: User | null = await bot.client.users
-		.fetch( searchUser )
-		.catch( () => {
-			return null
-		})
+	let foundUser: User | null =
+		( await bot.client.users.fetch( searchUser ) ) ?? null
 
 	// Find user by username
 	if ( !foundUser )
@@ -21,33 +18,38 @@ export async function getUser (
 			}) ?? null
 
 	// Find user by guild member
-	if ( !foundUser ) foundUser = getMember( searchUser, interaction )?.user ?? null
+	if ( !foundUser )
+		foundUser = ( await getMember( searchUser, interaction ) )?.user ?? null
 
 	return foundUser ?? null
 }
 
-export function getMember (
+export async function getMember (
 	searchUser: string,
 	interaction: Interaction
-): GuildMember | null {
+): Promise<GuildMember | null> {
 	// Find member by ID
-	let foundMember: GuildMember | undefined =
-		interaction.guild?.members.cache.find( ( member ) => {
-			return member.id.toLowerCase() === searchUser.toLowerCase()
-		})
+	let foundMember: GuildMember | null =
+		( await interaction.guild?.members.fetch( searchUser ) ) ?? null
 
 	// Find member by username
 	if ( !foundMember )
-		foundMember = interaction.guild?.members.cache.find( ( member ) => {
-			return (
-				member.user.username?.toLowerCase() === searchUser.toLowerCase()
-			)
-		})
+		foundMember =
+			interaction.guild?.members.cache.find( ( member ) => {
+				return (
+					member.user.username?.toLowerCase() ===
+					searchUser.toLowerCase()
+				)
+			}) ?? null
+
 	// Find member by nickname
 	if ( !foundMember )
-		foundMember = interaction.guild?.members.cache.find( ( member ) => {
-			return member.nickname?.toLowerCase() === searchUser.toLowerCase()
-		})
+		foundMember =
+			interaction.guild?.members.cache.find( ( member ) => {
+				return (
+					member.nickname?.toLowerCase() === searchUser.toLowerCase()
+				)
+			}) ?? null
 
 	return foundMember ?? null
 }
@@ -59,6 +61,6 @@ export async function getUserAndMember (
 ): Promise<[User | null, GuildMember | null]> {
 	return [
 		await getUser( searchUser, interaction, bot ),
-		getMember( searchUser, interaction )
+		await getMember( searchUser, interaction )
 	]
 }

@@ -114,7 +114,8 @@ export class Bracketeer {
 		 * (whether a good or bad thing, this allows overriding
 		 * the default responses. I'll allow it)
 		 */
-		if ( this.variables[ blockName ] ) return this.variables[ blockName ]
+		if ( this.variables[ blockName ] || this.variables[ blockName ] === '' )
+			return this.variables[ blockName ]
 
 		// Actual responses
 		const invalid = Bracketeer.escape( `{${fullBlock.join( '|' )}}` )
@@ -205,7 +206,7 @@ export class Bracketeer {
 			user: async (
 				searchUser: string,
 				property: string,
-				...args: string[]
+				args: string[]
 			): Promise<string | null> => {
 				if ( !this.context.interaction || !this.context.bot ) return null
 
@@ -226,7 +227,7 @@ export class Bracketeer {
 						this.context.interaction,
 						this.context.bot
 					)
-					args.unshift( property )
+					args?.unshift( property )
 					property = searchUser
 				}
 

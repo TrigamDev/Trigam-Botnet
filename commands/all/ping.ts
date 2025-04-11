@@ -1,5 +1,5 @@
 import type { Bot } from '@botnet/bots/bot'
-import { ping } from '@botnet/classes/pooler'
+import { ping } from '@botnet/tools/pooler'
 import {
 	ChatInputCommandInteraction,
 	MessageFlags,
