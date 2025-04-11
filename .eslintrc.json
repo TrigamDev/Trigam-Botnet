@@ -15,7 +15,7 @@
 	"rules": {
 		// Style
 		"semi": ["error", "never"],
-		"quotes": ["error", "single"],
+		"quotes": ["error", "double"],
 		"curly": ["error", "multi"],
 		"@stylistic/comma-style": "error",
 
