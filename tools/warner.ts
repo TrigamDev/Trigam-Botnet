@@ -1,14 +1,16 @@
-import type { Error } from "@botnet/config/errors"
-import { safeReply } from "@botnet/util/reply"
 import {
 	MessageFlags,
 	type APIEmbed,
 	type ButtonInteraction,
 	type CommandInteraction
 } from "discord.js"
-import errorFooters from "@pools/error.json"
-import { base } from "@tools/pooler"
+
 import type { Bot } from "@botnet/bots/bot"
+import { base } from "@tools/pooler"
+import { safeReply } from "@botnet/util/reply"
+
+import type { Error } from "@botnet/config/errors"
+import errorFooters from "@pools/error.json"
 
 export async function sendErrorMessage (
 	botError: Error,

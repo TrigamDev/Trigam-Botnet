@@ -1,8 +1,9 @@
-import type { Bot } from "@botnet/bots/bot"
 import type { Interaction } from "discord.js"
 
-import * as config from "@botnet/config/bracketeer"
+import type { Bot } from "@botnet/bots/bot"
 import { getUserAndMember } from "@botnet/util/get"
+
+import * as config from "@botnet/config/bracketeer"
 
 export class Bracketeer {
 	private context: Context

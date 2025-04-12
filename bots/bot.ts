@@ -1,14 +1,13 @@
 import { Client, Collection, REST, Routes } from "discord.js"
+import type { ActivityType, GatewayIntentBits, Snowflake } from "discord.js"
 import { readdir } from "fs/promises"
 import { join } from "path"
 
-import { login } from "@botnet/tools/pooler"
-import { Bracketeer } from "@botnet/tools/bracketeer/bracketeer"
+import { login } from "@tools/pooler"
+import type { Command } from "@commands/command"
+import { Bracketeer } from "@tools/bracketeer/bracketeer"
 
 import { devGuilds } from "@botnet/config/whitelist"
-
-import type { ActivityType, GatewayIntentBits, Snowflake } from "discord.js"
-import type { Command } from "@botnet/commands/command"
 
 export enum Stage {
 	Development = "dev",

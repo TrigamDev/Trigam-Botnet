@@ -1,5 +1,6 @@
-import type { Bot } from "@botnet/bots/bot"
 import type { GuildMember, Interaction, User } from "discord.js"
+
+import type { Bot } from "@botnet/bots/bot"
 
 export async function getUser (
 	searchUser: string,

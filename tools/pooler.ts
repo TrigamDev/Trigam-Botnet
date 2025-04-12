@@ -1,6 +1,5 @@
-import { randomElement } from "@botnet/util/random"
-
 import { Bracketeer, type Context } from "@tools/bracketeer/bracketeer"
+import { randomElement } from "@botnet/util/random"
 
 import logins from "@pools/login.json"
 import pings from "@pools/ping.json"

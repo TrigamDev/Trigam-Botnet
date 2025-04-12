@@ -1,5 +1,5 @@
-import { readdir } from "fs/promises"
 import { ShardingManager } from "discord.js"
+import { readdir } from "fs/promises"
 import { join } from "path"
 
 const botFolder = join( __dirname, "./bots" )

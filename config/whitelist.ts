@@ -9,3 +9,7 @@ export const devGuilds = {
 		"1004054009369350265"
 	]
 }
+
+export const devs = [
+	"480828680604614675"
+]

@@ -1,5 +1,6 @@
-import { Bot, Stage } from "@botnet/bots/bot"
 import { ActivityType, GatewayIntentBits } from "discord.js"
+
+import { Bot, Stage } from "@botnet/bots/bot"
 
 export default new Bot({
 	name: "Box",

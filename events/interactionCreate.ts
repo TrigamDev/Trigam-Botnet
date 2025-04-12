@@ -1,6 +1,7 @@
+import { Events, MessageFlags, type Interaction } from "discord.js"
+
 import type { Bot } from "@botnet/bots/bot"
 import { safeReply } from "@botnet/util/reply"
-import { Events, MessageFlags, type Interaction } from "discord.js"
 
 export default {
 	name: Events.InteractionCreate,
