@@ -32,7 +32,17 @@ export default {
 			if ( evaluated?.token ) evaluated.token = "********"
 
 			// Format the result and reply
-			const result: string = codeBlock( JSON.stringify( evaluated, null, 4 ) )
+			const result: string = codeBlock(
+				"json",
+				JSON.stringify(
+					evaluated,
+					( key, value ) => {
+						if ( typeof value === "bigint" ) return Number( value )
+						return value
+					},
+					4
+				)
+			)
 			if ( result.length > 2000 )
 				await sendErrorEmbed( errors.evalLongResult, interaction, bot )
 
