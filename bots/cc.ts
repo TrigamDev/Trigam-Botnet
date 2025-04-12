@@ -1,4 +1,4 @@
-import { ActivityType, GatewayIntentBits } from "discord.js"
+import { ActivityType, GatewayIntentBits as Intents } from "discord.js"
 
 import { Bot, Stage } from "@botnet/bots/bot"
 
@@ -14,7 +14,7 @@ export default new Bot({
 		stage: Stage.Development
 	},
 
-	intents: [ GatewayIntentBits.Guilds ],
+	intents: [ Intents.Guilds, Intents.GuildMembers ],
 
 	activity: {
 		name: "for custom commands!",

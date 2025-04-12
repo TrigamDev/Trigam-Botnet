@@ -28,7 +28,7 @@ export default {
 		const code = interaction.options.getString( "code" ) ?? ""
 		try {
 			// eslint-disable-next-line no-eval
-			const evaluated = eval( code )
+			const evaluated = await eval( code )
 			if ( evaluated?.token ) evaluated.token = "********"
 
 			// Format the result and reply

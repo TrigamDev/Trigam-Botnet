@@ -68,7 +68,11 @@ export class Bot {
 
 	public constructor ( config: BotConfig ) {
 		this.client = new Client({
-			intents: config.intents
+			intents: config.intents,
+			presence: {
+				status: config.inDevelopment ? "dnd" : "online",
+				activities: [ config.activity ]
+			}
 		})
 		this.config = config
 
