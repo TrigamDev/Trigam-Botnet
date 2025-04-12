@@ -1,4 +1,10 @@
-import { Client, Collection, REST, Routes } from "discord.js"
+import {
+	Client,
+	Collection,
+	PermissionFlagsBits,
+	REST,
+	Routes
+} from "discord.js"
 import type { ActivityType, GatewayIntentBits, Snowflake } from "discord.js"
 import { readdir } from "fs/promises"
 import { join } from "path"
@@ -108,6 +114,9 @@ export class Bot {
 			for ( const commandFile of commandFiles ) {
 				const command: Command = ( await import( `${dir}/${commandFile}` ) )
 					.default
+				if ( command.dev )
+					command.data.defaultMemberPermissions =
+						PermissionFlagsBits.Administrator
 				this.commands.set( command.data.name, command )
 			}
 		}

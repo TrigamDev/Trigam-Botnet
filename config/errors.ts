@@ -103,6 +103,24 @@ export default {
 		code: "COMMAND_ERROR_RUNNING",
 		id: "ERR_303"
 	} as Error,
+	evalStackSize: {
+		name: "Too Much Nesting",
+		description: "The resulting object has too many levels of nesting!",
+		code: "EVAL_STACK_SIZE",
+		id: "ERR_304"
+	} as Error,
+	evalLongResult: {
+		name: "Result Too Large",
+		description: "The resulting message is too long!",
+		code: "EVAL_LONG_RESULT",
+		id: "ERR_305"
+	} as Error,
+	evalError: {
+		name: "Eval Error",
+		description: "",
+		code: "EVAL_ERROR",
+		id: "ERR_306"
+	} as Error,
 
 	//
 	//	"Not Found" Errors - 400

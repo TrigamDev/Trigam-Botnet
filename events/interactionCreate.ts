@@ -1,7 +1,10 @@
-import { Events, MessageFlags, type Interaction } from "discord.js"
+import { Events, type Interaction } from "discord.js"
 
 import type { Bot } from "@botnet/bots/bot"
-import { safeReply } from "@botnet/util/reply"
+import { sendErrorEmbed } from "@botnet/tools/warner"
+
+import errors from "@botnet/config/errors"
+import { devs } from "@botnet/config/whitelist"
 
 export default {
 	name: Events.InteractionCreate,
@@ -17,14 +20,16 @@ export default {
 			return
 		}
 
+		if ( command.dev && !devs.includes( interaction.user.id ) ) {
+			await sendErrorEmbed( errors.devOnlyCommand, interaction, bot )
+			return
+		}
+
 		try {
 			await command.execute( bot, interaction )
 		} catch ( commandError ) {
 			console.error( commandError )
-			await safeReply( interaction, {
-				content: "There was an error while executing this command!",
-				flags: MessageFlags.Ephemeral
-			})
+			await sendErrorEmbed( errors.couldntRunCommand, interaction, bot )
 		}
 	}
 }

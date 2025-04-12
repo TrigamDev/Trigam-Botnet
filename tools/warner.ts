@@ -19,7 +19,7 @@ export async function sendErrorMessage (
 ) {
 	const footer = await base( errorFooters, { bot })
 	await safeReply( interaction, {
-		content: `## Error\n${botError.description}\n\`${botError.id}\`\n\n-# ${footer.chosen}`,
+		content: `## ${botError.name}\n${botError.description}\n\`${botError.id}\`\n\n-# ${footer.chosen}`,
 		flags: MessageFlags.Ephemeral
 	})
 }
@@ -31,7 +31,7 @@ export async function sendErrorEmbed (
 ) {
 	const footer = await base( errorFooters, { bot })
 	const errorEmbed: APIEmbed = {
-		title: "Error",
+		title: botError.name,
 		description: `${botError.description}\n\`${botError.id}\``,
 		footer: { text: footer.chosen },
 		color: 0xef233c

@@ -1,5 +1,5 @@
 import {
-	ApplicationCommandOptionType,
+	ApplicationCommandOptionType as OptionType,
 	ChatInputCommandInteraction
 } from "discord.js"
 
@@ -9,14 +9,14 @@ import { Bracketeer } from "@tools/bracketeer/bracketeer"
 
 const commandOptions = [
 	{
-		type: ApplicationCommandOptionType.String,
+		type: OptionType.String,
 		name: "args",
 		description:
 			"The arguments to execute the command with (seperated by commas)",
 		required: false
 	},
 	{
-		type: ApplicationCommandOptionType.Boolean,
+		type: OptionType.Boolean,
 		name: "debug",
 		description: "Whether to show the execution steps of the command",
 		required: false
@@ -29,12 +29,12 @@ export default {
 		description: "Execute custom command code",
 		options: [
 			{
-				type: ApplicationCommandOptionType.Subcommand,
+				type: OptionType.Subcommand,
 				name: "text",
 				description: "Run code from text",
 				options: [
 					{
-						type: ApplicationCommandOptionType.String,
+						type: OptionType.String,
 						name: "code",
 						description: "The code to run",
 						required: true
@@ -42,12 +42,12 @@ export default {
 				].concat( commandOptions )
 			},
 			{
-				type: ApplicationCommandOptionType.Subcommand,
+				type: OptionType.Subcommand,
 				name: "file",
 				description: "Run code from a text file",
 				options: [
 					{
-						type: ApplicationCommandOptionType.Attachment,
+						type: OptionType.Attachment,
 						name: "code",
 						description: "The text file to run",
 						required: true
