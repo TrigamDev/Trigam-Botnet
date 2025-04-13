@@ -7,7 +7,8 @@
 			"@commands/*": ["./commands/*"],
 			"@events/*": ["./events/*"],
 			"@pools/*": ["./config/pools/*"],
-			"@tools/*": ["./tools/*"]
+			"@tools/*": ["./tools/*"],
+			"@config/*": ["./config/*"]
 		},
 
 		// Type Checking

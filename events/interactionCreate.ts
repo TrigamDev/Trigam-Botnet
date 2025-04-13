@@ -3,8 +3,8 @@ import { Events, type Interaction } from "discord.js"
 import type { Bot } from "@botnet/bots/bot"
 import { sendErrorEmbed } from "@botnet/tools/warner"
 
-import errors from "@botnet/config/errors"
-import { devs } from "@botnet/config/whitelist"
+import errors from "@config/errors"
+import { devs } from "@config/whitelist"
 
 export default {
 	name: Events.InteractionCreate,

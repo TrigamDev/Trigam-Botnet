@@ -7,5 +7,5 @@
 6. @tools
 7. @botnet/util
 
-8. @botnet/config
+8. @config
 9. @pools

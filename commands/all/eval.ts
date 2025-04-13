@@ -8,7 +8,7 @@ import type { Bot } from "@botnet/bots/bot"
 import type { Command } from "@commands/command"
 import { safeReply } from "@botnet/util/reply"
 import { sendErrorEmbed } from "@botnet/tools/warner"
-import errors from "@botnet/config/errors"
+import errors from "@config/errors"
 
 export default {
 	dev: true,
@@ -36,7 +36,7 @@ export default {
 				"json",
 				JSON.stringify(
 					evaluated,
-					( key, value ) => {
+					( _key, value ) => {
 						if ( typeof value === "bigint" ) return Number( value )
 						return value
 					},

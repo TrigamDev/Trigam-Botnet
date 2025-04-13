@@ -9,7 +9,7 @@ import type { Bot } from "@botnet/bots/bot"
 import { base } from "@tools/pooler"
 import { safeReply } from "@botnet/util/reply"
 
-import type { Error } from "@botnet/config/errors"
+import type { Error } from "@config/errors"
 import errorFooters from "@pools/error.json"
 
 export async function sendErrorMessage (

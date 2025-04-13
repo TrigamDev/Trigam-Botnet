@@ -13,7 +13,7 @@ import { login } from "@tools/pooler"
 import type { Command } from "@commands/command"
 import { Bracketeer } from "@tools/bracketeer/bracketeer"
 
-import { devGuilds } from "@botnet/config/whitelist"
+import { devGuilds } from "@config/whitelist"
 
 export enum Stage {
 	Development = "dev",
