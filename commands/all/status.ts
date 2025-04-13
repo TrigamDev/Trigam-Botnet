@@ -13,8 +13,8 @@ import { safeReply } from "@botnet/util/reply"
 // https://github.com/GDColon/Polaris-Open/blob/main/commands/slash/botstatus.js
 export default {
 	data: {
-		name: "info",
-		description: "Displays some basic info about the bot"
+		name: "status",
+		description: "Displays the bot's status and info"
 	},
 	async execute ( bot: Bot, interaction: ChatInputCommandInteraction ) {
 		// Fetch various data
