@@ -1,0 +1,116 @@
+# Commands
+## All
++ /ping
++ /status
++ /eval
+- /report
+- /suggest
+- /command <command name> <enable/disable>
+- /ignore <user> <enable/disable>
+
+
+## Box (Fun)
+- /quote
+- /rate
+- /sudo
+- /8ball
+- /champ
+- /place
+- /urban
+
+
+## Toolbox (Util)
+- /rng <min> <max> <integer/float>
+- /dice <number of sides> <number of dice>
+- /coin <number of coints>
+- /card
+
+- /color
+- /highlight <phrase>
+
+### /info
+- /info user
+- /info channel
+- /info server
+- /info role
+
+### /gd
+- /gd profile <username/id>
+- /gd level <id>
+- /gd search <query> <filters...>
+- /gd search <quick search>
+- /gd daily <daily number?>
+- /gd weekly <weekly number?>
+- /gd event <event number?>
+- /gd leaderboard <stars/moons/diamonds/coins/demons/demon list/creator points>
+- /gd gauntlet <gauntlet>
+- /gd mappack <map pack>
+- /gd featured <levels/lists>
+
+- /welcome <channel> <message>
+- /persistent <role>
+
+
+## Hammer (Moderation)
+- /purge <number of messages> <from?> <type?> <has?/startswith?/endswith?>
+
+- /warn <user> <reason?> <number of warns?> <duration?>
+- warnings <user>
+
+- /note <user> <add/edit/delete> <note> <duration?>
+- /mute <user> <reason?> <duration?>
+- /kick <user> <reason?>
+- /ban <user> <reason?> <duration?>
+- /softban <user> <reason?>
+- /unban <user> <reason?>
+
+- /action <id>
+- /reason <action id> <new reason>
+- /duration <action id> <new duration>
+
+- /lock <channel> <enable/disable> <reason?> <duration?>
+
+### Auto modules
+- Nitro scam prevention
+- Word blacklist
+
+
+## Joystick (Games)
+- /rps
+- /trivia
+- /snake
+- /minesweeper
+
+- /tictactoe
+- /chess
+
+
+## Phone (Cross-server Communication)
+- /connect
+- /browse
+
+
+## Radio (Music)
+- /play
+- /pause
+- /stop
+- /skip
+- /queue
+- /filter
+- /loop
+
+
+## Calendar (Time)
+- /reminder <add/edit/delete> <date> <message>
+- /birthday <add/edit/delete> <user> <date>
+
+
+## Cog (Custom Commands)
+! /exec <text/file> <args?> <debug?>
+- /command <add/edit/remove> <name> <code>
+
+
+
+# Bugs
+## Bracketeer
+- User cache is near-empty
