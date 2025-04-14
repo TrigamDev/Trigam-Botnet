@@ -115,12 +115,18 @@ export class Bot {
 			const commandFiles = ( await readdir( dir ) ).filter( ( commandFile ) => {
 				return commandFile.endsWith( ".ts" )
 			})
-			for ( const commandFile of commandFiles ) {
-				const command: Command = ( await import( `${dir}/${commandFile}` ) )
+
+			for ( const file of commandFiles ) {
+				const command: Command = ( await import( `${dir}/${file}` ) )
 					.default
+
+				// Handle different settings
+				if ( command.disabled ) continue
 				if ( command.dev )
 					command.data.defaultMemberPermissions =
 						PermissionFlagsBits.Administrator
+
+				// Register commands
 				this.commands.set( command.data.name, command )
 			}
 		}
