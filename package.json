@@ -21,7 +21,6 @@
 		"discord.js": "^14.18.0",
 		"seedrandom": "^3.0.5"
 	},
-
 	"scripts": {
 		"start": "bun index.ts",
 		"lint": "bunx eslint ."

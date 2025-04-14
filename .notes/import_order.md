@@ -4,6 +4,7 @@
 3. @botnet/bots
 4. @commands
 5. @events
+
 6. @tools
 7. @botnet/util
 

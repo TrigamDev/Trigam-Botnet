@@ -1,5 +1,8 @@
 import emojis from "@config/emojis"
 
+interface RateOverrides {
+	[key: string]: RateOverride
+}
 export default {
 	trigam: {
 		aliases: [
@@ -21,7 +24,7 @@ export default {
 			"*trigonometry",
 			"It's Trigam Time"
 		]
-	} as RateOverride,
+	},
 	hitler: {
 		aliases: [ "hitler", "adolf", "adolfhitler", "hitleradolf" ],
 		rating: 0,
@@ -43,7 +46,7 @@ export default {
 			"I'm just not gonna say anything.",
 			"Maybe don't?"
 		]
-	} as RateOverride,
+	},
 	rats: {
 		aliases: [ "rat", "rats" ],
 		rating: 10,
@@ -64,10 +67,10 @@ export default {
 			`${emojis.rat}ㅤ`,
 			`${emojis.rat} ${emojis.rat} ${emojis.rat}ㅤ`
 		]
-	} as RateOverride
-}
+	}
+} as RateOverrides
 
-interface RateOverride {
+export interface RateOverride {
 	aliases: string[]
 	rating: number
 	messages: string[]
