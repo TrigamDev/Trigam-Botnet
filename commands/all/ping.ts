@@ -2,6 +2,7 @@ import { ChatInputCommandInteraction, MessageFlags } from "discord.js"
 
 import type { Bot } from "@botnet/bots/bot"
 import type { Command } from "@commands/command"
+
 import { ping } from "@tools/pooler"
 
 export default {

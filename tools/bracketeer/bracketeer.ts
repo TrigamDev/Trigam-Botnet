@@ -1,6 +1,7 @@
 import type { Interaction } from "discord.js"
 
 import type { Bot } from "@botnet/bots/bot"
+
 import { getUserAndMember } from "@botnet/util/get"
 
 import * as config from "@config/bracketeer"

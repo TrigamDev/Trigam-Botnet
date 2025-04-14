@@ -8,14 +8,13 @@ import {
 import type { Bot } from "@botnet/bots/bot"
 import type { Command } from "@commands/command"
 
+import { safeReply } from "@botnet/util/reply"
 import { clamp, mapValue } from "@botnet/util/math"
 import { randomElement, randomRange } from "@botnet/util/random"
-
-import rateOverrides from "@config/overrides/rate"
-import type { RateOverride } from "@botnet/config/overrides/rate"
-import emojis from "@botnet/config/emojis"
 import { progressBar } from "@botnet/util/progress"
-import { safeReply } from "@botnet/util/reply"
+
+import rateOverrides, { type RateOverride } from "@config/overrides/rate"
+import emojis from "@config/emojis"
 
 export default {
 	data: {
@@ -43,7 +42,7 @@ export default {
 			}
 		]
 	},
-	async execute ( bot: Bot, interaction: ChatInputCommandInteraction ) {
+	async execute ( _bot: Bot, interaction: ChatInputCommandInteraction ) {
 		// Gather all options
 		const query: string = interaction.options.getString( "query", true )
 		let total: number = interaction.options.getInteger( "total" ) ?? 5

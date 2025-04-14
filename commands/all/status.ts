@@ -8,6 +8,7 @@ import {
 
 import type { Bot } from "@botnet/bots/bot"
 import type { Command } from "@commands/command"
+
 import { safeReply } from "@botnet/util/reply"
 
 // https://github.com/GDColon/Polaris-Open/blob/main/commands/slash/botstatus.js

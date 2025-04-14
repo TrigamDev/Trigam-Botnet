@@ -6,8 +6,10 @@ import {
 
 import type { Bot } from "@botnet/bots/bot"
 import type { Command } from "@commands/command"
+
+import { sendErrorEmbed } from "@tools/warner"
 import { safeReply } from "@botnet/util/reply"
-import { sendErrorEmbed } from "@botnet/tools/warner"
+
 import errors from "@config/errors"
 
 export default {

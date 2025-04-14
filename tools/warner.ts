@@ -6,6 +6,7 @@ import {
 } from "discord.js"
 
 import type { Bot } from "@botnet/bots/bot"
+
 import { base } from "@tools/pooler"
 import { safeReply } from "@botnet/util/reply"
 
