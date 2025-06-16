@@ -27,6 +27,10 @@ export default new Bot({
 		prefix: "{bot|name} #{bot|shard|id}] ",
 		color: "\x1b[33m"
 	},
+	emoji: {
+		id: "1140625715117691001",
+		name: "toolbox_bot"
+	},
 
 	inDevelopment: true,
 	token: process.env[ "TOKEN_UTIL" ] as string

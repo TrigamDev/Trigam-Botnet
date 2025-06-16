@@ -2,6 +2,23 @@
 	"name": "trigam-botnet",
 	"module": "index.ts",
 	"type": "module",
+
+	"scripts": {
+		"start": "bun index.ts",
+		"lint": "bunx eslint ."
+	},
+
+	"dependencies": {
+		"discord.js": "^14.19.1",
+		"@discordjs/builders": "^1.11.1",
+		"@discordjs/formatters": "^0.6.1",
+		"seedrandom": "^3.0.5"
+	},
+
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+
 	"devDependencies": {
 		"@types/bun": "latest",
 		"eslint": "8.52.0",
@@ -13,16 +30,5 @@
 		"prettier-eslint": "^16.3.0",
 		"eslint-config-prettier": "^10.1.1",
 		"@types/seedrandom": "^3.0.8"
-	},
-	"peerDependencies": {
-		"typescript": "^5.0.0"
-	},
-	"dependencies": {
-		"discord.js": "^14.18.0",
-		"seedrandom": "^3.0.5"
-	},
-	"scripts": {
-		"start": "bun index.ts",
-		"lint": "bunx eslint ."
 	}
 }

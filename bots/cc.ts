@@ -27,6 +27,10 @@ export default new Bot({
 		prefix: "{bot|name} #{bot|shard|id}] ",
 		color: "\x1b[36m"
 	},
+	emoji: {
+		id: "1149895560199950376",
+		name: "cog_bot"
+	},
 
 	inDevelopment: true,
 	token: process.env[ "TOKEN_CC" ] as string

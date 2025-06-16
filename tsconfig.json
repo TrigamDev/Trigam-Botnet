@@ -6,9 +6,12 @@
 			"@botnet/*": ["./*"],
 			"@commands/*": ["./commands/*"],
 			"@events/*": ["./events/*"],
-			"@pools/*": ["./config/pools/*"],
+
 			"@tools/*": ["./tools/*"],
-			"@config/*": ["./config/*"]
+
+			"@config/*": ["./config/*"],
+			"@pools/*": ["./config/pools/*"],
+			"@components/*": ["./components/*"],
 		},
 
 		// Type Checking

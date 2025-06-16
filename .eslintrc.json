@@ -42,7 +42,6 @@
 
 		// Convention/Consistency
 		"line-comment-position": ["error", { "position": "above" }],
-		"camelcase": "error",
 		"class-methods-use-this": "error",
 		"consistent-return": "error",
 		"default-case-last": "error",

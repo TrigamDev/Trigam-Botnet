@@ -1,4 +1,5 @@
 import {
+	CDN,
 	Client,
 	Collection,
 	PermissionFlagsBits,
@@ -46,6 +47,10 @@ export type BotConfig = {
 	console: {
 		prefix: string
 		color: string
+	},
+	emoji: {
+		id: string,
+		name: string
 	}
 
 	inDevelopment: boolean
@@ -185,5 +190,18 @@ export class Bot {
 		const prefix = await bracketeer.execute( this.config.console.prefix )
 		const msg = await bracketeer.execute( message )
 		console.log( `${this.config.console.color}${prefix}\x1b[0m${msg}` )
+	}
+
+	// Some basic helpers
+	public getVersion (): string {
+		const { major, minor, patch, stage } = this.config.version
+		return `${major}.${minor}.${patch}-${stage}`
+	}
+
+	public getAvatar (): string {
+		let avatarUrl = this.client.user?.avatarURL()
+		if ( !avatarUrl ) avatarUrl = this.client.user?.defaultAvatarURL
+		if ( !avatarUrl ) avatarUrl = new CDN().defaultAvatar( 0 )
+		return avatarUrl
 	}
 }

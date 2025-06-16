@@ -1,4 +1,6 @@
 1. discord.js
+	- @discordjs/builders
+	- @discordjs/formatters
 2. Other libs
 
 3. @botnet/bots
@@ -10,3 +12,6 @@
 
 8. @config
 9. @pools
+10. @components
+
+11. Misc
