@@ -1,10 +1,12 @@
-import { Events, type Interaction } from "discord.js"
+import { Events, MessageFlags, type Interaction } from "discord.js"
 
 import type { Bot } from "@botnet/bots/bot"
-import { sendErrorEmbed } from "@botnet/tools/warner"
+
+import errorMessage from "@components/util/error"
 
 import errors from "@config/errors"
 import { devs } from "@config/whitelist"
+import { safeReply } from "@botnet/util/reply"
 
 /* -------------------------------------------------------------------------- */
 
@@ -23,7 +25,10 @@ export default {
 		}
 
 		if ( command.dev && !devs.includes( interaction.user.id ) ) {
-			await sendErrorEmbed( errors.devOnlyCommand, interaction, bot )
+			await safeReply( interaction, {
+				components: [ await errorMessage( errors.devOnlyCommand, bot ) ],
+				flags: [ MessageFlags.IsComponentsV2, MessageFlags.Ephemeral ]
+			})
 			return
 		}
 
@@ -31,7 +36,10 @@ export default {
 			await command.execute( bot, interaction )
 		} catch ( commandError ) {
 			console.error( commandError )
-			await sendErrorEmbed( errors.couldntRunCommand, interaction, bot )
+			await safeReply( interaction, {
+				components: [ await errorMessage( errors.couldntRunCommand, bot ) ],
+				flags: [ MessageFlags.IsComponentsV2, MessageFlags.Ephemeral ]
+			})
 		}
 	}
 }

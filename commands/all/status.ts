@@ -5,7 +5,7 @@ import type { Command } from "@commands/command"
 
 import { safeReply } from "@botnet/util/reply"
 
-import { botStatus } from "@components/all/status"
+import { botStatus } from "@components/commands/all/status"
 
 /* -------------------------------------------------------------------------- */
 

@@ -12,7 +12,7 @@ import type { Command } from "@commands/command"
 import sandbox from "@botnet/util/sandbox/sandbox"
 import { safeReply } from "@botnet/util/reply"
 
-import evalResult from "@components/all/eval"
+import evalResult from "@botnet/components/commands/all/eval"
 
 /* -------------------------------------------------------------------------- */
 
