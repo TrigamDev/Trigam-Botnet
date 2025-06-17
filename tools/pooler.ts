@@ -4,6 +4,8 @@ import { randomElement } from "@botnet/util/random"
 import logins from "@pools/login.json"
 import pings from "@pools/ping.json"
 
+/* -------------------------------------------------------------------------- */
+
 export interface PoolElement {
 	chosen: string
 	pool: string[]

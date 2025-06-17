@@ -16,6 +16,8 @@ import { progressBar } from "@botnet/util/progress"
 import rateOverrides, { type RateOverride } from "@config/overrides/rate"
 import emojis from "@config/emojis"
 
+/* -------------------------------------------------------------------------- */
+
 export default {
 	data: {
 		name: "rate",

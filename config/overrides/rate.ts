@@ -1,5 +1,7 @@
 import emojis from "@config/emojis"
 
+/* -------------------------------------------------------------------------- */
+
 interface RateOverrides {
 	[key: string]: RateOverride
 }

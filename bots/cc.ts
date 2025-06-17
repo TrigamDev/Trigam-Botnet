@@ -2,6 +2,8 @@ import { ActivityType, GatewayIntentBits as Intents } from "discord.js"
 
 import { Bot, Stage } from "@botnet/bots/bot"
 
+/* -------------------------------------------------------------------------- */
+
 export default new Bot({
 	name: "Cog",
 	description:

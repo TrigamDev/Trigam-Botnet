@@ -16,6 +16,8 @@ import { Bracketeer } from "@tools/bracketeer/bracketeer"
 
 import { devGuilds } from "@config/whitelist"
 
+/* -------------------------------------------------------------------------- */
+
 export enum Stage {
 	Development = "dev",
 	Alpha = "alpha",
@@ -47,9 +49,9 @@ export type BotConfig = {
 	console: {
 		prefix: string
 		color: string
-	},
+	}
 	emoji: {
-		id: string,
+		id: string
 		name: string
 	}
 

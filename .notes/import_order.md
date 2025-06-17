@@ -1,17 +1,20 @@
-1. discord.js
+1. Node/Bun
+
+2. discord.js
 	- @discordjs/builders
 	- @discordjs/formatters
-2. Other libs
+3. Other libs
 
-3. @botnet/bots
-4. @commands
-5. @events
+4. @botnet/bots
+5. @commands
+6. @events
 
-6. @tools
-7. @botnet/util
+7. @components
 
-8. @config
-9. @pools
-10. @components
+8. @tools
+9. @botnet/util
 
-11. Misc
+10. @config
+11. @pools
+
+12. Misc

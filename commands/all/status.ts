@@ -5,16 +5,21 @@ import type { Command } from "@commands/command"
 
 import { safeReply } from "@botnet/util/reply"
 
-import { buildComponent } from "@components/status"
+import { botStatus } from "@components/all/status"
 
-// https://github.com/GDColon/Polaris-Open/blob/main/commands/slash/botstatus.js
+/* -------------------------------------------------------------------------- */
+
+/* Based on: https://github.com/GDColon/Polaris-Open/blob/main/commands/slash/botstatus.js */
+
+/* -------------------------------------------------------------------------- */
+
 export default {
 	data: {
 		name: "status",
 		description: "Displays the bot's status and info"
 	},
 	async execute ( bot: Bot, interaction: ChatInputCommandInteraction ) {
-		const statusContainer = await buildComponent( bot, interaction )
+		const statusContainer = await botStatus( bot, interaction )
 
 		await safeReply( interaction, {
 			components: [ statusContainer ],

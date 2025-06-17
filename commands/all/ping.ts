@@ -5,6 +5,8 @@ import type { Command } from "@commands/command"
 
 import { ping } from "@tools/pooler"
 
+/* -------------------------------------------------------------------------- */
+
 export default {
 	data: {
 		name: "ping",

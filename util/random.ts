@@ -1,5 +1,7 @@
 import seedrandom from "seedrandom"
 
+/* -------------------------------------------------------------------------- */
+
 export function randomElement<Type> (
 	array: Type[],
 	seed?: string | undefined

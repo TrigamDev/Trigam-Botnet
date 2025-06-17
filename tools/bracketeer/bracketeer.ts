@@ -6,6 +6,8 @@ import { getUserAndMember } from "@botnet/util/get"
 
 import * as config from "@config/bracketeer"
 
+/* -------------------------------------------------------------------------- */
+
 export class Bracketeer {
 	private context: Context
 

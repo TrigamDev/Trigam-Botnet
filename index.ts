@@ -2,6 +2,8 @@ import { ShardingManager } from "discord.js"
 import { readdir } from "fs/promises"
 import { join } from "path"
 
+/* -------------------------------------------------------------------------- */
+
 const botFolder = join( __dirname, "./bots" )
 const botFiles = ( await readdir( botFolder ) ).filter( ( botFile ) => {
 	return botFile !== "bot.ts"

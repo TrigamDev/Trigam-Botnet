@@ -2,6 +2,8 @@ import type { ApplicationCommandData, Interaction } from "discord.js"
 
 import type { Bot } from "@botnet/bots/bot"
 
+/* -------------------------------------------------------------------------- */
+
 export interface Command {
 	permissions?: bigint
 	cooldown?: number

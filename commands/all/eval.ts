@@ -1,16 +1,20 @@
+import { inspect } from "bun"
+
 import {
 	ApplicationCommandOptionType as OptionType,
 	ChatInputCommandInteraction,
-	codeBlock
+	MessageFlags
 } from "discord.js"
 
 import type { Bot } from "@botnet/bots/bot"
 import type { Command } from "@commands/command"
 
-import { sendErrorEmbed } from "@tools/warner"
+import sandbox from "@botnet/util/sandbox/sandbox"
 import { safeReply } from "@botnet/util/reply"
 
-import errors from "@config/errors"
+import evalResult from "@components/all/eval"
+
+/* -------------------------------------------------------------------------- */
 
 export default {
 	dev: true,
@@ -28,38 +32,30 @@ export default {
 	},
 	async execute ( bot: Bot, interaction: ChatInputCommandInteraction ) {
 		const code = interaction.options.getString( "code" ) ?? ""
-		try {
-			// eslint-disable-next-line no-eval
-			const evaluated = await eval( code )
-			if ( evaluated?.token ) evaluated.token = "********"
 
-			// Format the result and reply
-			const result: string = codeBlock(
-				"json",
-				JSON.stringify(
-					evaluated,
-					( _key, value ) => {
-						if ( typeof value === "bigint" ) return Number( value )
-						return value
-					},
-					4
-				)
-			)
-			if ( result.length > 2000 )
-				await sendErrorEmbed( errors.evalLongResult, interaction, bot )
+		try {
+			const evaluated = await sandbox( code, { bot, interaction })
+
+			// Result
+			let lengthBudget: number = 3500
+			lengthBudget -= code.length
+
+			let result: string = inspect( evaluated, {
+				depth: 1
+			}).slice( 0, lengthBudget )
+
+			if ( typeof result === "undefined" ) result = "undefined"
+			if ( result.length === lengthBudget ) result += " // Truncated..."
 
 			await safeReply( interaction, {
-				content: result
+				components: [ evalResult( bot, code, result ) ],
+				flags: [ MessageFlags.IsComponentsV2 ]
 			})
 		} catch ( evalError: any ) {
-			// Usually a stack call size error
-			if ( evalError instanceof RangeError )
-				await sendErrorEmbed( errors.evalStackSize, interaction, bot )
-			else {
-				const dynamicError = errors.evalError
-				dynamicError.description = evalError.message
-				await sendErrorEmbed( dynamicError, interaction, bot )
-			}
+			await safeReply( interaction, {
+				components: [ evalResult( bot, code, String( evalError ), true ) ],
+				flags: [ MessageFlags.IsComponentsV2 ]
+			})
 		}
 	}
 } as Command

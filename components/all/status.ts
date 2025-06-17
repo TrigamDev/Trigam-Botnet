@@ -19,10 +19,15 @@ import {
 
 import type { Bot } from "@botnet/bots/bot"
 
-import { fields, header, linkRow, text } from "@botnet/util/components"
+import { header, text } from "@components/basic/text"
+import { fields } from "@components/basic/fields"
+import { linkRow } from "@components/basic/button"
+
 import { wrapText } from "@botnet/util/text"
 
-export async function buildComponent (
+/* -------------------------------------------------------------------------- */
+
+export async function botStatus (
 	bot: Bot,
 	interaction: ChatInputCommandInteraction
 ) {

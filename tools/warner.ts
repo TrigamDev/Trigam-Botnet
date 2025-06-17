@@ -13,6 +13,8 @@ import { safeReply } from "@botnet/util/reply"
 import type { Error } from "@config/errors"
 import errorFooters from "@pools/error.json"
 
+/* -------------------------------------------------------------------------- */
+
 export async function sendErrorMessage (
 	botError: Error,
 	interaction: CommandInteraction | ButtonInteraction,

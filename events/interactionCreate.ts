@@ -6,6 +6,8 @@ import { sendErrorEmbed } from "@botnet/tools/warner"
 import errors from "@config/errors"
 import { devs } from "@config/whitelist"
 
+/* -------------------------------------------------------------------------- */
+
 export default {
 	name: Events.InteractionCreate,
 	once: false,

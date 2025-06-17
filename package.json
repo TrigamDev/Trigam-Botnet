@@ -2,23 +2,20 @@
 	"name": "trigam-botnet",
 	"module": "index.ts",
 	"type": "module",
-
 	"scripts": {
 		"start": "bun index.ts",
 		"lint": "bunx eslint ."
 	},
-
 	"dependencies": {
-		"discord.js": "^14.19.1",
 		"@discordjs/builders": "^1.11.1",
 		"@discordjs/formatters": "^0.6.1",
+		"@nyariv/sandboxjs": "^0.8.25",
+		"discord.js": "^14.19.1",
 		"seedrandom": "^3.0.5"
 	},
-
 	"peerDependencies": {
 		"typescript": "^5.0.0"
 	},
-
 	"devDependencies": {
 		"@types/bun": "latest",
 		"eslint": "8.52.0",

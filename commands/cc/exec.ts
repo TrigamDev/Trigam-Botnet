@@ -8,6 +8,8 @@ import type { Command } from "@commands/command"
 
 import { Bracketeer } from "@tools/bracketeer/bracketeer"
 
+/* -------------------------------------------------------------------------- */
+
 const commandOptions = [
 	{
 		type: OptionType.String,

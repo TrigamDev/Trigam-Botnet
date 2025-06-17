@@ -1,0 +1,1 @@
+export const errorColor: number = 0xef233c
