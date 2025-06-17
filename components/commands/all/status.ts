@@ -19,11 +19,11 @@ import {
 
 import type { Bot } from "@botnet/bots/bot"
 
+import { wrapText } from "@botnet/util/text"
+
 import { header, text } from "@components/basic/text"
 import { fields } from "@components/basic/fields"
 import { linkRow } from "@components/basic/button"
-
-import { wrapText } from "@botnet/util/text"
 
 /* -------------------------------------------------------------------------- */
 

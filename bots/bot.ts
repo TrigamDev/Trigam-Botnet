@@ -1,3 +1,6 @@
+import { readdir } from "fs/promises"
+import { join } from "path"
+
 import {
 	CDN,
 	Client,
@@ -7,11 +10,10 @@ import {
 	Routes
 } from "discord.js"
 import type { ActivityType, GatewayIntentBits, Snowflake } from "discord.js"
-import { readdir } from "fs/promises"
-import { join } from "path"
+
+import type { Command } from "@commands/command"
 
 import { login } from "@tools/pooler"
-import type { Command } from "@commands/command"
 import { Bracketeer } from "@tools/bracketeer/bracketeer"
 
 import { devGuilds } from "@config/whitelist"

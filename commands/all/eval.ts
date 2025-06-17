@@ -9,7 +9,7 @@ import {
 import type { Bot } from "@botnet/bots/bot"
 import type { Command } from "@commands/command"
 
-import sandbox from "@botnet/util/sandbox/sandbox"
+import sandbox from "@tools/sandbox"
 import { safeReply } from "@botnet/util/reply"
 
 import evalResult from "@botnet/components/commands/all/eval"

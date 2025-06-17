@@ -2,11 +2,12 @@ import { Events, MessageFlags, type Interaction } from "discord.js"
 
 import type { Bot } from "@botnet/bots/bot"
 
-import errorMessage from "@components/util/error"
+import { safeReply } from "@botnet/util/reply"
 
 import errors from "@config/errors"
 import { devs } from "@config/whitelist"
-import { safeReply } from "@botnet/util/reply"
+
+import errorMessage from "@components/util/error"
 
 /* -------------------------------------------------------------------------- */
 

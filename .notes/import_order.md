@@ -9,12 +9,12 @@
 5. @commands
 6. @events
 
-7. @components
+7. @tools
+8. @botnet/util
 
-8. @tools
-9. @botnet/util
+9. @config
 
-10. @config
-11. @pools
+10. @pools
+11. @components
 
 12. Misc

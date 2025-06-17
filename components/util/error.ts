@@ -3,14 +3,14 @@ import { HeadingLevel, inlineCode, subtext } from "@discordjs/formatters"
 
 import type { Bot } from "@botnet/bots/bot"
 
-import { header, text } from "@components/basic/text"
-import { fields } from "@components/basic/fields"
-
 import { base } from "@botnet/tools/pooler"
 
 import { errorColor } from "@botnet/config/components"
 import type { Error } from "@botnet/config/errors"
+
 import errorFooters from "@pools/error.json"
+import { header, text } from "@components/basic/text"
+import { fields } from "@components/basic/fields"
 
 /* -------------------------------------------------------------------------- */
 

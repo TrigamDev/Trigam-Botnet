@@ -3,9 +3,9 @@ import { HeadingLevel, codeBlock } from "@discordjs/formatters"
 
 import type { Bot } from "@botnet/bots/bot"
 
-import { header, text } from "@components/basic/text"
-
 import { errorColor } from "@botnet/config/components"
+
+import { header, text } from "@components/basic/text"
 
 /* -------------------------------------------------------------------------- */
 

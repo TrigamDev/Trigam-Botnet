@@ -1,6 +1,7 @@
-import { ShardingManager } from "discord.js"
 import { readdir } from "fs/promises"
 import { join } from "path"
+
+import { ShardingManager } from "discord.js"
 
 /* -------------------------------------------------------------------------- */
 
