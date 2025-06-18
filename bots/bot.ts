@@ -1,5 +1,6 @@
 import { readdir } from "fs/promises"
 import { join } from "path"
+import { AlignmentEnum, AsciiTable3 } from "ascii-table3"
 
 import {
 	CDN,
@@ -11,12 +12,14 @@ import {
 } from "discord.js"
 import type { ActivityType, GatewayIntentBits, Snowflake } from "discord.js"
 
-import type { Command } from "@commands/command"
+import { validateCommand, type Command } from "@commands/command"
 
 import { login } from "@tools/pooler"
 import { Bracketeer } from "@tools/bracketeer/bracketeer"
 
 import { devGuilds } from "@config/whitelist"
+import chalk from "chalk"
+import { wrapText } from "@botnet/util/text"
 
 /* -------------------------------------------------------------------------- */
 
@@ -50,7 +53,7 @@ export type BotConfig = {
 
 	console: {
 		prefix: string
-		color: string
+		color: ( message: string ) => string
 	}
 	emoji: {
 		id: string
@@ -114,6 +117,10 @@ export class Bot {
 
 	public async registerCommands () {
 		const commandFolder = join( __dirname, "../commands" )
+		const loadStatus = new Map<
+			string,
+			{ loaded: boolean; name: string; message: string }
+		>()
 
 		// Get all command files
 		const commandDirs: string[] = [ "all", this.config.botId ]
@@ -136,9 +143,51 @@ export class Bot {
 						PermissionFlagsBits.Administrator
 
 				// Register commands
-				this.commands.set( command.data.name, command )
+				try {
+					validateCommand( command )
+					this.commands.set( command.data.name, command )
+					loadStatus.set( file, {
+						loaded: true,
+						name: command.data.name,
+						message: ""
+					})
+				} catch ( validationError: any ) {
+					loadStatus.set( file, {
+						loaded: false,
+						name: "-",
+						message: validationError.message
+					})
+				}
 			}
 		}
+
+		// Create command loading table
+		const loadMatrix = Array.from( loadStatus ).map( ( [ key, value ] ) => {
+			let color = chalk.green
+			let symbol = "✔"
+			if ( !value.loaded ) {
+				color = chalk.red
+				symbol = "✘"
+			}
+			return [
+				color( key ),
+				color( value.name ),
+				color( symbol ),
+				color( value.message )
+			]
+		})
+
+		const statusTable = new AsciiTable3(
+			this.config.console.color( this.config.name )
+		)
+			.setHeading( "File", "Name", "Load?", "Message" )
+			.addRowMatrix( loadMatrix )
+			.setAlign( 3, AlignmentEnum.CENTER )
+			.setStyle( "unicode-round" )
+			.setWidth( 4, 25 )
+			.setWrapped( 4 )
+
+		console.log( statusTable.toString() )
 	}
 
 	public async deployCommands () {
@@ -193,7 +242,7 @@ export class Bot {
 		const bracketeer = new Bracketeer({ bot: this }, {})
 		const prefix = await bracketeer.execute( this.config.console.prefix )
 		const msg = await bracketeer.execute( message )
-		console.log( `${this.config.console.color}${prefix}\x1b[0m${msg}` )
+		console.log( `${this.config.console.color( prefix )}${msg}` )
 	}
 
 	// Some basic helpers

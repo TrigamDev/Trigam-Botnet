@@ -1,4 +1,5 @@
 import { ActivityType, GatewayIntentBits } from "discord.js"
+import chalk from "chalk"
 
 import { Bot, Stage } from "@botnet/bots/bot"
 
@@ -27,7 +28,7 @@ export default new Bot({
 
 	console: {
 		prefix: "{bot|name} #{bot|shard|id}] ",
-		color: "\x1b[35m"
+		color: chalk.hex( "#6F1798" )
 	},
 	emoji: {
 		id: "1140432477979164673",

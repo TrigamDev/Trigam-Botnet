@@ -10,6 +10,8 @@
 		"@discordjs/builders": "^1.11.1",
 		"@discordjs/formatters": "^0.6.1",
 		"@nyariv/sandboxjs": "^0.8.25",
+		"ascii-table3": "^1.0.1",
+		"chalk": "^5.4.1",
 		"discord.js": "^14.19.1",
 		"seedrandom": "^3.0.5"
 	},
