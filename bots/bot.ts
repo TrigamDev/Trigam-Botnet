@@ -1,5 +1,6 @@
 import { readdir } from "fs/promises"
 import { join } from "path"
+import chalk from "chalk"
 import { AlignmentEnum, AsciiTable3 } from "ascii-table3"
 
 import {
@@ -18,8 +19,6 @@ import { login } from "@tools/pooler"
 import { Bracketeer } from "@tools/bracketeer/bracketeer"
 
 import { devGuilds } from "@config/whitelist"
-import chalk from "chalk"
-import { wrapText } from "@botnet/util/text"
 
 /* -------------------------------------------------------------------------- */
 
