@@ -5,7 +5,7 @@ import {
 } from "discord.js"
 import Sandbox from "@nyariv/sandboxjs"
 
-import type { Bot } from "@botnet/src/bots/bot"
+import type { Bot } from "@bots/bot"
 
 /* -------------------------------------------------------------------------- */
 

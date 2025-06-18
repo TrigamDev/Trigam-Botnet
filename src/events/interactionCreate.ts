@@ -4,10 +4,10 @@ import type { Bot } from "@bots/bot"
 
 import { safeReply } from "@botnet/util/reply"
 
+import errorMessage from "@components/util/error"
+
 import errors from "@config/errors"
 import { devs } from "@config/whitelist"
-
-import errorMessage from "@components/util/error"
 
 /* -------------------------------------------------------------------------- */
 

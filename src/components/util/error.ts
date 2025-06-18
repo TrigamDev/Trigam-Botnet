@@ -5,12 +5,13 @@ import type { Bot } from "@bots/bot"
 
 import { base } from "@tools/pooler"
 
+import { header, text } from "@components/basic/text"
+import { fields } from "@components/basic/fields"
+
 import { errorColor } from "@config/components"
 import type { Error } from "@config/errors"
 
 import errorFooters from "@pools/error.jsonc"
-import { header, text } from "@components/basic/text"
-import { fields } from "@components/basic/fields"
 
 /* -------------------------------------------------------------------------- */
 
