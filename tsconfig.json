@@ -3,15 +3,21 @@
 		// Paths
 		"baseUrl": ".",
 		"paths": {
-			"@botnet/*": ["./*"],
-			"@commands/*": ["./commands/*"],
-			"@events/*": ["./events/*"],
+			"@botnet/*": ["src/*"],
+			"@bots/*": ["src/bots/*"],
+			"@commands/*": ["src/commands/*"],
+			"@events/*": ["src/events/*"],
 
-			"@tools/*": ["./tools/*"],
+			"@tools/*": ["src/tools/*"],
 
-			"@config/*": ["./config/*"],
-			"@pools/*": ["./config/pools/*"],
-			"@components/*": ["./components/*"],
+			"@components/*": ["src/components/*"],
+
+			"@config/*": ["src/config/*"],
+
+			"@data/*": ["data/*"],
+			"@pools/*": ["data/pools/*"],
+
+			"@assets/*": ["assets/*"],
 		},
 
 		// Type Checking

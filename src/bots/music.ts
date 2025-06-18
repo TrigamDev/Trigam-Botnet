@@ -1,0 +1,40 @@
+import { ActivityType, GatewayIntentBits } from "discord.js"
+import chalk from "chalk"
+
+import { Bot, Stage } from "@bots/bot"
+
+/* -------------------------------------------------------------------------- */
+
+export default new Bot({
+	name: "Radio",
+	description:
+		"A bot focused on playing music right into voice channels, giving some background music to whatever madness is happening in call",
+	botId: "music",
+	version: {
+		major: 0,
+		minor: 1,
+		patch: 0,
+		stage: Stage.Development
+	},
+
+	intents: [ GatewayIntentBits.Guilds ],
+
+	activity: {
+		name: "to your tunes!",
+		type: ActivityType.Listening
+	},
+
+	color: 0xef233c,
+
+	console: {
+		prefix: "{bot|name} #{bot|shard|id}] ",
+		color: chalk.hex( "#EF233C" )
+	},
+	emoji: {
+		id: "1140432593993601114",
+		name: "radio_bot"
+	},
+
+	inDevelopment: true,
+	token: process.env[ "TOKEN_MUSIC" ] as string
+})
