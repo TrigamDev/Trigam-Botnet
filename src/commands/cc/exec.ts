@@ -68,8 +68,12 @@ export default {
 
 		// Get the contents of the text file, if submitted
 
+		// Get args
+		const argsString = interaction.options.getString( "args" )
+		const args = argsString?.split( "," ).map( ( arg ) => arg.trim() ) ?? []
+
 		// Execute the command
-		const bracketeer = new Bracketeer({ bot, interaction }, {})
+		const bracketeer = new Bracketeer({ bot, interaction, args }, {})
 		const response = await bracketeer.execute( customCode )
 
 		// Reply

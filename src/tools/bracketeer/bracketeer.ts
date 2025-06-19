@@ -197,6 +197,26 @@ export class Bracketeer {
 		}
 
 		this.responses = {
+			// Args
+			args: ( arg: any, until?: string ) => {
+				const args = this.context.args ?? []
+
+				if ( !arg ) return args.join( " " ) ?? ""
+				else if ( arg === "#" ) return String( args.length )
+
+				const argIndex = Number( arg ) - 1
+				let untilIndex = argIndex + 1
+				if ( until )
+					if ( until === "#" ) untilIndex = args.length
+					else untilIndex = Number( until )
+
+				return (
+					args
+						.slice( argIndex, Math.max( argIndex, untilIndex ) )
+						.join( " " ) ?? ""
+				)
+			},
+
 			// Bot
 			bot: {
 				name: this.context.bot?.config.name ?? "",
@@ -258,8 +278,11 @@ export class Bracketeer {
 
 export interface Context {
 	[key: string]: any
+
 	bot?: Bot
 	interaction?: Interaction
+
+	args?: string[]
 }
 
 interface Settings {
